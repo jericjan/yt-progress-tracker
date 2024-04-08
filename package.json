@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/chrome": "^0.0.266",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.95",
     "@types/react": "^18.2.74",
@@ -17,14 +19,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "set PORT=3001 && react-scripts start",
+    "build": "set INLINE_RUNTIME_CHUNK=false && craco build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
       "react-app/jest"
     ]
   },
