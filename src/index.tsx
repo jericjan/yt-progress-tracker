@@ -13,8 +13,6 @@ root.render(
   </React.StrictMode>
 );
 
-chrome.storage.local.setAccessLevel({ accessLevel: 'TRUSTED_AND_UNTRUSTED_CONTEXTS' });
-
 const template = document.getElementById("li_template") as HTMLTemplateElement;
 async () => {
   // const firstChild = template.content.firstElementChild as Element;
