@@ -32,6 +32,9 @@ dependencies:
   '@types/react-dom':
     specifier: ^18.2.24
     version: 18.2.24
+  '@types/youtube':
+    specifier: ^0.0.50
+    version: 0.0.50
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -2748,6 +2751,10 @@ packages:
     resolution: {integrity: sha512-xQ67Yc/laOG5uMfX/093MRlGGCIBzZMarVa+gfNKJxWAIgykYpVGkBdbqEzGDDfCrVUj6Hiff4mTZ5BA6TmAog==}
     dependencies:
       '@types/yargs-parser': 21.0.3
+    dev: false
+
+  /@types/youtube@0.0.50:
+    resolution: {integrity: sha512-d4GpH4uPYp9W07kc487tiq6V/EUHl18vZWFMbQoe4Sk9LXEWzFi/BMf9x7TI4m7/j7gU3KeX8H6M8aPBgykeLw==}
     dev: false
 
   /@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.57.0)(typescript@4.9.5):

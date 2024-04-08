@@ -6,6 +6,7 @@ module.exports = {
                 entry: {
                     main: [env === 'development' && require.resolve('react-dev-utils/webpackHotDevClient'),paths.appIndexJs].filter(Boolean),
                     content: './src/youtube.ts',
+                    stuff: './src/injected.ts',
                 },
                 output: {
                     ...webpackConfig.output,
