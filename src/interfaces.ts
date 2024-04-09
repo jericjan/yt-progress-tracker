@@ -12,14 +12,21 @@ interface PartialVideoInfo {
 
 
 
-interface VideoInfo extends PartialVideoInfo {
-  [x: string]: {
-    title: string;
-    currTime: number;
-    session: TabAndWindowID[];
+// interface VideoInfo extends PartialVideoInfo {
+//   [x: string]: {
+//     title: string;
+//     currTime: number;
+//     session: TabAndWindowID[];
+//   };
+// }
+
+type VideoInfo = {
+  [key: string]: {
+      title: string;
+      currTime: number;
+      session: TabAndWindowID[];
   };
 }
-
 
 
 interface TabAndWindowID {
@@ -27,9 +34,20 @@ interface TabAndWindowID {
   windowId: number;
 }
 
+type RowProps = {
+  title: string;
+  currTime: string;
+}
+
+type AppProps = {
+  vids: VideoInfo;
+}
+
 export {
   type TabContainerElem,
   type VideoInfo,
   type PartialVideoInfo,
   type TabAndWindowID,
+  type RowProps,
+  type AppProps
 };

@@ -11,16 +11,37 @@ import { getCurrentTab } from "./tabManipulation";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-console.log("test");
 
-(async () => {
-  const template = await waitforElem("#li_template") as HTMLTemplateElement;
+chrome.storage.local.get().then((saveVods) => {
+  root.render(
+    <React.StrictMode>
+      <App vids={saveVods as VideoInfo}/>
+    </React.StrictMode>
+  );
+});
+
+// const testStuff: VideoInfo = {
+//   "abc": {
+//     title: "le title",
+//     currTime: 10.05,
+//     session: [{
+//       tabId: 123,
+//       windowId: 456
+//     }]
+//   }
+// }
+
+// root.render(
+//   <React.StrictMode>
+//     <App vids={testStuff}/>
+//   </React.StrictMode>
+// );
+
+
+//this isn't running btw
+async () => {
+  const template = (await waitforElem("#li_template")) as HTMLTemplateElement;
   // const template = document.querySelector("#li_template") as HTMLTemplateElement;
   const savedVods: VideoInfo = await chrome.storage.local.get();
   const tabMan = new TabManager();
@@ -30,7 +51,7 @@ console.log("test");
     const title: string = contents["title"];
     // const tabId = contents["tabId"];
     // const windowId = contents["windowId"];
-    const sessionIDs = contents['session']
+    const sessionIDs = contents["session"];
     const currTab = await getCurrentTab();
 
     const tabObj = new YouTubeTab(template, sessionIDs, currTab);
@@ -44,7 +65,7 @@ console.log("test");
 
   tabMan.appendAll();
   // show all tabs
-})();
+};
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

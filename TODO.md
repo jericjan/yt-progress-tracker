@@ -6,6 +6,7 @@ Project Description
 
 ### Todo
 
+- [ ] btn for reset time for video  
 - [ ] migrate to types instead of interfaces  
 - [ ] getCurrentTab wont work if i'm viewing a different tab while it's playing  
 - [ ] remove waitforProperty  
