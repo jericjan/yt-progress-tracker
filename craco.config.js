@@ -7,6 +7,7 @@ module.exports = {
                     main: [env === 'development' && require.resolve('react-dev-utils/webpackHotDevClient'),paths.appIndexJs].filter(Boolean),
                     content: './src/youtube.ts',
                     stuff: './src/injected.ts',
+                    sw: './src/sw.ts'
                 },
                 output: {
                     ...webpackConfig.output,
@@ -15,7 +16,9 @@ module.exports = {
                 optimization: {
                     ...webpackConfig.optimization,
                     runtimeChunk: false,
-                }
+                    // minimize: false //comment out for prod
+                },
+                // mode: 'development' //comment out for prod
             }
         },
     }

@@ -4,7 +4,7 @@
   "manifest_version": 3,
   "minimum_chrome_version": "120",
   "description": "Saves your YouTube progress when watching videos",
-  "permissions": ["storage", "userScripts"],
+  "permissions": ["tabs", "storage"],
   "host_permissions": ["https://www.youtube.com/*"],
   "action": {
     "default_popup": "index.html",
@@ -26,5 +26,8 @@
       "resources": ["*.js"],
       "matches": ["https://www.youtube.com/*"]
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "./static/js/sw.js"
+  }
 }
