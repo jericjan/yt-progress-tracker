@@ -45,13 +45,14 @@ function List({ items, renderItem }: ListProps) {
   vidIds.sort((first, second) => {
     const firstState = items[first].isCurrent;
     const secondState = items[second].isCurrent;
-
+    const firstSessCount = items[first].sessions.length
+    const secondSessCount = items[second].sessions.length
     if (firstState == true && secondState == false) {
       return -1;
     } else if (firstState == false && secondState == true) {
       return 1;
     } else {
-      return 0;
+      return secondSessCount - firstSessCount;
     }
   });
 

@@ -6,7 +6,7 @@ Project Description
 
 ### Todo
 
-- [ ] put videos with existing tabs higher on the list  
+- [ ] display sorted by date added  
 - [ ] also set video time when clicked  
 - [ ] handle when multiple tabs of same vid  
 - [ ] add css progress bar to each item  
@@ -18,6 +18,7 @@ Project Description
 
 ### In Progress
 
+- [ ] put videos with existing tabs higher on the list  
 
 ### Done ✓
 
