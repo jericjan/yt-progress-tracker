@@ -29,6 +29,10 @@ function getVideoId(url?: string): string {
       VIDEO_PLAYER_SELECTOR,
       "getCurrentTime"
     );
+    const totalTime: number = await waitforProperty(
+      VIDEO_PLAYER_SELECTOR,
+      "getDuration"
+    );
     const videoData: { title: string } = await waitforProperty(
       VIDEO_PLAYER_SELECTOR,
       "getVideoData"
@@ -36,7 +40,7 @@ function getVideoId(url?: string): string {
     const title = videoData["title"];
     // const currTab = await getCurrentTab(); // won't work here. moved to content script.
     const vidInfo: PartialVideoInfo = {
-      [vidId]: { title: title, currTime: currentTime },
+      [vidId]: { title: title, currTime: currentTime, totalTime: totalTime},
     };
     console.log("Saving...", vidInfo);
     document.dispatchEvent(new CustomEvent("ytSendProg", { detail: vidInfo }));

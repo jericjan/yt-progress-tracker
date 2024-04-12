@@ -1,5 +1,4 @@
 import { TabContainerElem, TabAndWindowID } from "./interfaces";
-import { waitforElem } from "./elemFuncs";
 
 class YouTubeTab {
   element: HTMLLIElement;

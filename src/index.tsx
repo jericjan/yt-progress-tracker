@@ -26,7 +26,7 @@ const root = ReactDOM.createRoot(
   for (const vidId in savedVods) {
     const matchedTabs = await findTab(vidId);
     const sessions = matchedTabs.map((x)=> {return {tabId: x.id, windowId: x.windowId} as TabAndWindowID})
-    savedVods[vidId].session = sessions
+    savedVods[vidId].sessions = sessions
     const currTab = await getCurrentTab();
     savedVods[vidId].isCurrent = sessions.some((x) => {
       return x.tabId == currTab.id;

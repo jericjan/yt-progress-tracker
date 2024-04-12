@@ -2,8 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { RowProps, AppProps, ListProps, TabAndWindowID } from "./interfaces";
 import { formatTime } from "./mathStuff";
-function Row({ title, currTime, vidId, sessions }: RowProps) {
-
+function Row({ title, currTime, totalTime, vidId, sessions }: RowProps) {
   const click = async () => {
     // const matchedTabs = await findTab(vidId);
 
@@ -24,7 +23,6 @@ function Row({ title, currTime, vidId, sessions }: RowProps) {
     }
   };
 
-
   return (
     <li>
       <a className="tabContainer" onClick={click}>
@@ -34,6 +32,7 @@ function Row({ title, currTime, vidId, sessions }: RowProps) {
         <div className="tabContents">
           <h3 className="title">{title}</h3>
           <p className="curr-time">{currTime}</p>
+          <p className="total-time">{totalTime}</p>
           <p className="tab-count">{sessions.length}</p>
         </div>
       </a>
@@ -61,17 +60,19 @@ function List({ items, renderItem }: ListProps) {
     <>
       {vidIds.map((vidId) => {
         const contents = items[vidId];
-        const title = contents["title"];
-        const currTime = contents["currTime"];
-        const sessions = contents["session"];
-        const isCurrent = contents["isCurrent"];
-        return renderItem(title, formatTime(currTime), vidId, sessions, isCurrent);
+        const { title, currTime, totalTime, sessions, isCurrent } = contents;
+        return renderItem(
+          title,
+          formatTime(currTime),
+          formatTime(totalTime),
+          vidId,
+          sessions,
+          isCurrent
+        );
       })}
     </>
   );
 }
-
-
 
 function App({ vids }: AppProps) {
   return (
@@ -87,16 +88,16 @@ function App({ vids }: AppProps) {
           renderItem={(
             title: string,
             currTime: string,
+            totalTime: string,
             vidId: string,
             sessions: TabAndWindowID[],
-            isCurrent: boolean
           ) => (
             <Row
               title={title}
               currTime={currTime}
+              totalTime={totalTime}
               vidId={vidId}
               sessions={sessions}
-              isCurrent={isCurrent}
             />
           )}
         />

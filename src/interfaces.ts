@@ -11,7 +11,8 @@ interface PartialVideoInfo {
   [x: string]: {
     title: string;
     currTime: number;
-    session?: TabAndWindowID[];
+    totalTime: number;
+    sessions?: TabAndWindowID[];
     isCurrent?: boolean;    
   };
 }
@@ -29,15 +30,17 @@ type VideoInfo = {
   [key: string]: {
     title: string;
     currTime: number;
-    session: TabAndWindowID[];
+    totalTime: number;
+    sessions: TabAndWindowID[];
     isCurrent: boolean;
   };
 };
 
 type renderItemFunc = (
+  vidId: string,
   title: string,
   currTime: string,
-  vidId: string,
+  totalTime: string,
   sessions: TabAndWindowID[],
   isCurrent: boolean
 ) => JSX.Element;
@@ -50,9 +53,9 @@ interface TabAndWindowID {
 type RowProps = {
   title: string;
   currTime: string;
+  totalTime: string;
   vidId: string;
-  sessions: TabAndWindowID[],
-  isCurrent: boolean
+  sessions: TabAndWindowID[]
 };
 
 type AppProps = {

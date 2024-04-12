@@ -4,7 +4,7 @@
 // check if vid elem exists [x]
 //save it to storage [x]
 //notify user of progress
-import { PartialVideoInfo, TabAndWindowID, VideoInfo } from "./interfaces";
+import { PartialVideoInfo } from "./interfaces";
 
 // import { Method } from "@testing-library/react";
 console.log("I'm the content script");
