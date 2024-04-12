@@ -51,7 +51,7 @@ async function waitforProperty(
     const findProperty = () => {
       const elem = document.querySelector(selector) as Element;
       if (propertyName in elem) {
-        console.log("Property found:", propertyName);
+        // console.log("Property found:", propertyName);
         resolve((elem as any)[propertyName]());
       } else {
         console.log(

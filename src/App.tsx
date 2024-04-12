@@ -2,24 +2,47 @@ import logo from "./logo.svg";
 import "./App.css";
 import { RowProps, AppProps, ListProps, TabAndWindowID } from "./interfaces";
 import { formatTime } from "./mathStuff";
-function Row({ title, currTime, totalTime, vidId, perc, sessions }: RowProps) {
+function Row({
+  title,
+  currTime,
+  totalTime,
+  vidId,
+  perc,
+  sessions,
+  isCurrent,
+}: RowProps) {
   const click = async () => {
     // const matchedTabs = await findTab(vidId);
 
+    const timedUrl = `https://youtu.be/${vidId}?t=${Math.floor(currTime)}`;
+
     if (sessions.length == 0) {
       //none found, open it
-      chrome.tabs.create({ url: `https://youtu.be/${vidId}` });
+      chrome.tabs.create({
+        url: timedUrl,
+      });
     } else {
       // TODO: handle if more than one tab
 
-      const firstMatch = sessions[0];
+      if (isCurrent) {
+        // document.dispatchEvent(new CustomEvent("ytSetVideoTime", { detail: Math.floor(currTime) }));
+        if (
+          confirm(
+            "The page will now be refreshed with the saved timestamp. Continue?"
+          )
+        ) {
+          await chrome.tabs.sendMessage(sessions[0].tabId as number, timedUrl);
+        }
+      } else {
+        const firstMatch = sessions[0];
 
-      await chrome.tabs.update(firstMatch.tabId as number, {
-        active: true,
-      });
-      await chrome.windows.update(firstMatch.windowId, {
-        focused: true,
-      });
+        await chrome.tabs.update(firstMatch.tabId as number, {
+          active: true,
+        });
+        await chrome.windows.update(firstMatch.windowId, {
+          focused: true,
+        });
+      }
     }
   };
 
@@ -27,11 +50,16 @@ function Row({ title, currTime, totalTime, vidId, perc, sessions }: RowProps) {
     <li>
       <a className="tabContainer" onClick={click}>
         <div className="iconDiv">
-          <img className="icon" src={`https://i.ytimg.com/vi/${vidId}/default.jpg`}/>
+          <img
+            className="icon"
+            src={`https://i.ytimg.com/vi/${vidId}/default.jpg`}
+          />
         </div>
         <div className="tabContents">
           <h3 className="title">{title}</h3>
-          <p className="time">{`${currTime} / ${totalTime} (${perc})`}</p>
+          <p className="time">{`${formatTime(currTime)} / ${formatTime(
+            totalTime
+          )} (${perc})`}</p>
           <p className="tab-count">{sessions.length}</p>
         </div>
       </a>
@@ -45,8 +73,8 @@ function List({ items, renderItem }: ListProps) {
   vidIds.sort((first, second) => {
     const firstState = items[first].isCurrent;
     const secondState = items[second].isCurrent;
-    const firstSessCount = items[first].sessions.length
-    const secondSessCount = items[second].sessions.length
+    const firstSessCount = items[first].sessions.length;
+    const secondSessCount = items[second].sessions.length;
     if (firstState == true && secondState == false) {
       return -1;
     } else if (firstState == false && secondState == true) {
@@ -63,9 +91,9 @@ function List({ items, renderItem }: ListProps) {
         const { title, currTime, totalTime, sessions, isCurrent } = contents;
         return renderItem(
           title,
-          formatTime(currTime),
-          formatTime(totalTime),
-          ((currTime / totalTime)* 100).toFixed(2)  + "%",
+          currTime,
+          totalTime,
+          ((currTime / totalTime) * 100).toFixed(2) + "%",
           vidId,
           sessions,
           isCurrent
@@ -88,11 +116,12 @@ function App({ vids }: AppProps) {
           items={vids}
           renderItem={(
             title: string,
-            currTime: string,
-            totalTime: string,
+            currTime: number,
+            totalTime: number,
             perc: string,
             vidId: string,
-            sessions: TabAndWindowID[]
+            sessions: TabAndWindowID[],
+            isCurrent: boolean
           ) => (
             <Row
               title={title}
@@ -101,6 +130,7 @@ function App({ vids }: AppProps) {
               perc={perc}
               vidId={vidId}
               sessions={sessions}
+              isCurrent={isCurrent}
             />
           )}
         />

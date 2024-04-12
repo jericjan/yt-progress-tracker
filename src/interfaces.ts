@@ -37,28 +37,32 @@ type VideoInfo = {
 };
 
 type renderItemFunc = (
-  vidId: string,
   title: string,
-  currTime: string,
-  totalTime: string,
+  currTime: number,
+  totalTime: number,
   perc: string,
+  vidId: string,
   sessions: TabAndWindowID[],
   isCurrent: boolean
 ) => JSX.Element;
+
+type RowProps = {
+  vidId: string;
+  title: string;
+  currTime: number;
+  totalTime: number;
+  perc: string;
+  sessions: TabAndWindowID[]
+  isCurrent: boolean;
+};
+
 
 interface TabAndWindowID {
   tabId: number | undefined;
   windowId: number;
 }
 
-type RowProps = {
-  title: string;
-  currTime: string;
-  totalTime: string;
-  perc: string;
-  vidId: string;
-  sessions: TabAndWindowID[]
-};
+
 
 type AppProps = {
   vids: VideoInfo;

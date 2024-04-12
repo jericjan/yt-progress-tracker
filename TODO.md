@@ -6,22 +6,25 @@ Project Description
 
 ### Todo
 
+- [ ] use chrome.scripting instead of inject()  
+- [ ] chrome.tabs.getCurrent is a thing??  
+- [ ] clean up VideoInfo type  
 - [ ] display sorted by date added  
-- [ ] also set video time when clicked  
-- [ ] handle when multiple tabs of same vid  
+- [ ] add delete button in UI  
 - [ ] add css progress bar to each item  
 - [ ] add option to view all currently open YT tabs  
-- [ ] add delete button in UI  
 - [ ] btn for reset time for video  
 - [ ] migrate to types instead of interfaces  
 - [ ] remove waitforProperty  
+- [ ] handle when multiple tabs of same vid  
 
 ### In Progress
 
-- [ ] put videos with existing tabs higher on the list  
 
 ### Done ✓
 
+- [x] also set video time when clicked  
+- [x] put videos with existing tabs higher on the list  
 - [x] add Yt thumb as icon to ext UI  
 - [x] wrong id when clicked on diff. vid  
 - [x] do not update if time is lesser than saved  
