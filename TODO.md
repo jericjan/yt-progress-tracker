@@ -15,10 +15,10 @@ Project Description
 - [ ] btn for reset time for video  
 - [ ] migrate to types instead of interfaces  
 - [ ] remove waitforProperty  
-- [ ] sw receives wrong id when clicked on diff. vid  
 
 ### In Progress
 
+- [ ] wrong id when clicked on diff. vid  
 
 ### Done ✓
 

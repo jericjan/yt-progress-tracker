@@ -28,7 +28,7 @@ function main() {
     return;
   }
   waitforElem(VIDEO_PLAYER_SELECTOR).then(async (e) => {
-    monitorProgress(vidId, e as YT.Player).catch((error) => {
+    monitorProgress().catch((error) => {
       console.error(error);
     });
   });

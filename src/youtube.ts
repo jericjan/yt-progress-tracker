@@ -49,10 +49,17 @@ function main() {
 
     const vidId = Object.keys(stuff)[0];
     const storedData: PartialVideoInfo = await chrome.storage.local.get(vidId);
-    const storedTime = storedData[vidId].currTime;
-    const newTime = stuff[vidId].currTime;
+    if (Object.keys(storedData).length != 0) {
+      //if it alr exists,
+      const storedTime = storedData[vidId].currTime;
+      const newTime = stuff[vidId].currTime;
 
-    if (newTime > storedTime) {
+      if (newTime > storedTime) {
+        // and it's a newer time
+        chrome.storage.local.set(stuff);
+      }
+    } else {
+      // else, it don't exist
       chrome.storage.local.set(stuff);
     }
   });
