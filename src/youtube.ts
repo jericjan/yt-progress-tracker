@@ -45,8 +45,16 @@ function main() {
     //     }
     //   });
 
-    chrome.storage.local.set(stuff);
+    // check if it exists
 
+    const vidId = Object.keys(stuff)[0];
+    const storedData: PartialVideoInfo = await chrome.storage.local.get(vidId);
+    const storedTime = storedData[vidId].currTime;
+    const newTime = stuff[vidId].currTime;
+
+    if (newTime > storedTime) {
+      chrome.storage.local.set(stuff);
+    }
   });
   inject();
 }
