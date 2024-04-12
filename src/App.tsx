@@ -27,7 +27,7 @@ function Row({ title, currTime, totalTime, vidId, perc, sessions }: RowProps) {
     <li>
       <a className="tabContainer" onClick={click}>
         <div className="iconDiv">
-          <img className="icon" />
+          <img className="icon" src={`https://i.ytimg.com/vi/${vidId}/default.jpg`}/>
         </div>
         <div className="tabContents">
           <h3 className="title">{title}</h3>

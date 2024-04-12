@@ -17,7 +17,7 @@ async function waitforElem(selector: string): Promise<Element | YT.Player> {
     const findElement = () => {
       const element = document.querySelector(selector);
       if (element) {
-        console.log("Element found:", element.outerHTML);
+        // console.log("Element found:", element.outerHTML);
         resolve(element);
       } else {
         console.log("Element not found yet...");
