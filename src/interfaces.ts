@@ -1,16 +1,20 @@
 interface TabContainerElem extends HTMLElement {
-  sessionIDs: TabAndWindowID[]
+  sessionIDs: TabAndWindowID[];
 }
 
-// it's partial, will need to go through the content script to gain tab and window ID
+/** it's partial.
+ *  will need to go through index.tsx to gain tab and window ID.
+ * when in local storage, session and isCurrent are undefined.
+ * they will be added later and then convert to VideoInfo.
+ */
 interface PartialVideoInfo {
   [x: string]: {
     title: string;
     currTime: number;
+    session?: TabAndWindowID[];
+    isCurrent?: boolean;    
   };
 }
-
-
 
 // interface VideoInfo extends PartialVideoInfo {
 //   [x: string]: {
@@ -20,14 +24,23 @@ interface PartialVideoInfo {
 //   };
 // }
 
+/** Video info variable that should be created after modifying after getting from storage */
 type VideoInfo = {
   [key: string]: {
-      title: string;
-      currTime: number;
-      session: TabAndWindowID[];
+    title: string;
+    currTime: number;
+    session: TabAndWindowID[];
+    isCurrent: boolean;
   };
-}
+};
 
+type renderItemFunc = (
+  title: string,
+  currTime: string,
+  vidId: string,
+  sessions: TabAndWindowID[],
+  isCurrent: boolean
+) => JSX.Element;
 
 interface TabAndWindowID {
   tabId: number | undefined;
@@ -37,11 +50,19 @@ interface TabAndWindowID {
 type RowProps = {
   title: string;
   currTime: string;
-}
+  vidId: string;
+  sessions: TabAndWindowID[],
+  isCurrent: boolean
+};
 
 type AppProps = {
   vids: VideoInfo;
-}
+};
+
+type ListProps = {
+  items: VideoInfo;
+  renderItem: renderItemFunc;
+};
 
 export {
   type TabContainerElem,
@@ -49,5 +70,7 @@ export {
   type PartialVideoInfo,
   type TabAndWindowID,
   type RowProps,
-  type AppProps
+  type AppProps,
+  type ListProps,
+  type renderItemFunc
 };

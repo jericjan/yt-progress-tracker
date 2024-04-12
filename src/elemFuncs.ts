@@ -1,5 +1,4 @@
-const INTERVAL = 5000;
-const PROPERTY_INTERVAL = 2000;
+const INTERVAL = 250;
 
 async function waitforElem(selector: string): Promise<Element | YT.Player> {
   console.log("Checking for element:", selector);

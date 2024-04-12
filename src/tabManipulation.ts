@@ -8,18 +8,18 @@ async function getCurrentTab(): Promise<chrome.tabs.Tab> {
   return tab;
 }
 
-async function findTab(targetVidId: string): Promise<chrome.tabs.Tab[]> {
-  // get all audible tabs, look for matching url
-  const audibleTabs = await chrome.tabs.query({ audible: true });
+async function findTab(targetVidId: string, onlyAudible?: Boolean ): Promise<chrome.tabs.Tab[]> {
+
+  const options = onlyAudible ? {audible: true} : {}
+
+  const audibleTabs = await chrome.tabs.query(options);
 
   const matchedTabs = audibleTabs.filter((tab) => {
     const url = tab.url;
     const currentVidId = getVideoId(url);
     if (currentVidId == targetVidId) {
       return true;
-    } else {
-      console.log("tab mismatch: ", currentVidId, targetVidId);
-    }
+    } 
   });
 
   return matchedTabs;

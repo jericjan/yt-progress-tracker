@@ -23,7 +23,7 @@ function main() {
   document.addEventListener("ytSendProg", async function (e) {
     const stuff: PartialVideoInfo = (<any>e).detail;
     // console.log('Received from injected script: ', e, stuff);
-    const [vidId, values] = Object.entries(stuff)[0];
+    // const [vidId, values] = Object.entries(stuff)[0];
 
     // // can't do this here either. gotta send to a service worker.
     // const currTab = await getCurrentTab();
@@ -32,17 +32,21 @@ function main() {
     //   windowId: currTab.windowId,
     // };
 
-    chrome.runtime
-      .sendMessage({ message: "IDs please", vidId: vidId })
-      .then((response: TabAndWindowID[]) => {
-        console.log("Received response from service worker:", response);
-        if (response.length > 0) {
-          const completeStuff: VideoInfo = {
-            [vidId]: { ...values, session: response },
-          };
-          chrome.storage.local.set(completeStuff);
-        }
-      });
+    // // nvm i don't need a sw. i can just run getCurrentTab in index.tsx
+    // chrome.runtime
+    //   .sendMessage({ message: "IDs please", vidId: vidId })
+    //   .then((response: TabAndWindowID[]) => {
+    //     console.log("Received response from service worker:", response);
+    //     if (response.length > 0) {
+    //       const completeStuff: VideoInfo = {
+    //         [vidId]: { ...values, session: response },
+    //       };
+    //       chrome.storage.local.set(completeStuff);
+    //     }
+    //   });
+
+    chrome.storage.local.set(stuff);
+
   });
   inject();
 }
