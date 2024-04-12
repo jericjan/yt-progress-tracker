@@ -6,6 +6,7 @@ Project Description
 
 ### Todo
 
+- [ ] add css progress bar to each item  
 - [ ] sw receives wrong id when clicked on diff. vid  
 - [ ] add option to view all currently open YT tabs  
 - [ ] display dupe tab count  
@@ -20,8 +21,8 @@ Project Description
 
 ### In Progress
 
-- [ ] include final time and percentage in UI  
-- [ ] dont store ids in storage and isntead, dynamically grab tabs on open (50%)  
+- [ ] add percentage to UI  
+- [ ] handle when multiple tabs of same vid  
 
 ### Done ✓
 

@@ -41,6 +41,7 @@ type renderItemFunc = (
   title: string,
   currTime: string,
   totalTime: string,
+  perc: string,
   sessions: TabAndWindowID[],
   isCurrent: boolean
 ) => JSX.Element;
@@ -54,6 +55,7 @@ type RowProps = {
   title: string;
   currTime: string;
   totalTime: string;
+  perc: string;
   vidId: string;
   sessions: TabAndWindowID[]
 };

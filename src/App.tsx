@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { RowProps, AppProps, ListProps, TabAndWindowID } from "./interfaces";
 import { formatTime } from "./mathStuff";
-function Row({ title, currTime, totalTime, vidId, sessions }: RowProps) {
+function Row({ title, currTime, totalTime, vidId, perc, sessions }: RowProps) {
   const click = async () => {
     // const matchedTabs = await findTab(vidId);
 
@@ -31,8 +31,7 @@ function Row({ title, currTime, totalTime, vidId, sessions }: RowProps) {
         </div>
         <div className="tabContents">
           <h3 className="title">{title}</h3>
-          <p className="curr-time">{currTime}</p>
-          <p className="total-time">{totalTime}</p>
+          <p className="time">{`${currTime} / ${totalTime} (${perc})`}</p>
           <p className="tab-count">{sessions.length}</p>
         </div>
       </a>
@@ -65,6 +64,7 @@ function List({ items, renderItem }: ListProps) {
           title,
           formatTime(currTime),
           formatTime(totalTime),
+          ((currTime / totalTime)* 100).toFixed(2)  + "%",
           vidId,
           sessions,
           isCurrent
@@ -89,13 +89,15 @@ function App({ vids }: AppProps) {
             title: string,
             currTime: string,
             totalTime: string,
+            perc: string,
             vidId: string,
-            sessions: TabAndWindowID[],
+            sessions: TabAndWindowID[]
           ) => (
             <Row
               title={title}
               currTime={currTime}
               totalTime={totalTime}
+              perc={perc}
               vidId={vidId}
               sessions={sessions}
             />
