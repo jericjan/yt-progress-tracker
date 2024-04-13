@@ -16,10 +16,10 @@ Project Description
 
 ### In Progress
 
-- [ ] btn for reset time for video  
 
 ### Done ✓
 
+- [x] btn for reset time for video  
 - [x] moving files around  
 - [x] absolute imports  
 - [x] display YT tabs not in storage  

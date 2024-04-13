@@ -1,6 +1,6 @@
-import { RowProps, ListProps } from "modules/interfaces";
+import { RowProps, ListProps, PartialVideoInfo } from "modules/interfaces";
 import { formatTime } from "modules/mathStuff";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 function Row({
   title,
@@ -12,7 +12,7 @@ function Row({
   isCurrent,
 }: RowProps) {
   const listRef = useRef<any>(null);
-
+  const [currTimeState, setCurrTimeState] = useState(currTime);
   const click = async () => {
     // const matchedTabs = await findTab(vidId);
 
@@ -69,6 +69,20 @@ function Row({
     }
   };
 
+  const resetTime = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrTimeState(0)
+    const vidInfo: PartialVideoInfo = {
+      [vidId]: {
+        title: title,
+        currTime: 0,
+        totalTime: totalTime,
+        epoch: Date.now(),
+      },
+    };
+    chrome.storage.local.set(vidInfo);
+  };
+
   return (
     <li ref={listRef}>
       <a className="tabContainer" onClick={click}>
@@ -80,17 +94,12 @@ function Row({
         </div>
         <div className="tabContents">
           <h3 className="title">{title}</h3>
-          <p className="time">{`${formatTime(currTime)} / ${formatTime(
+          <p className="time">{`${formatTime(currTimeState)} / ${formatTime(
             totalTime
           )} (${perc})`}</p>
           <p className="tab-count">{sessions.length}</p>
-          <button
-            onClick={(e) => {
-              deleteVid(e);
-            }}
-          >
-            Delete
-          </button>
+          <button onClick={resetTime}>Reset Time</button>
+          <button onClick={deleteVid}>Delete</button>
         </div>
       </a>
     </li>
