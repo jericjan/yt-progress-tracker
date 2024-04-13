@@ -5,7 +5,7 @@ interface TabContainerElem extends HTMLElement {
 /** it's partial.
  *  will need to go through index.tsx to gain tab and window ID.
  * when in local storage, session and isCurrent are undefined.
- * they will be added later and then convert to VideoInfo.
+ * they will be added later and then convert to {@link VideoInfo}.
  */
 interface PartialVideoInfo {
   [x: string]: {
@@ -36,16 +36,21 @@ type VideoInfo = {
   };
 };
 
+// type renderItemFunc = (
+//   title: string,
+//   currTime: number,
+//   totalTime: number,
+//   perc: string,
+//   vidId: string,
+//   sessions: TabAndWindowID[],
+//   isCurrent: boolean
+// ) => JSX.Element;
+
 type renderItemFunc = (
-  title: string,
-  currTime: number,
-  totalTime: number,
-  perc: string,
-  vidId: string,
-  sessions: TabAndWindowID[],
-  isCurrent: boolean
+  props: RowProps
 ) => JSX.Element;
 
+/**basically looks the same as {@link VideoInfo} expect no nesting and an extra key */
 type RowProps = {
   vidId: string;
   title: string;

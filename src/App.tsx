@@ -121,15 +121,15 @@ function List({ items, renderItem }: ListProps) {
       {vidIds.map((vidId) => {
         const contents = items[vidId];
         const { title, currTime, totalTime, sessions, isCurrent } = contents;
-        return renderItem(
-          title,
-          currTime,
-          totalTime,
-          ((currTime / totalTime) * 100).toFixed(2) + "%",
-          vidId,
-          sessions,
-          isCurrent
-        );
+        return renderItem({
+          title: title,
+          currTime: currTime,
+          totalTime: totalTime,
+          perc: ((currTime / totalTime) * 100).toFixed(2) + "%",
+          vidId: vidId,
+          sessions: sessions,
+          isCurrent: isCurrent,
+        });
       })}
     </>
   );
@@ -146,23 +146,15 @@ function App({ vids }: AppProps) {
         {/* <List title="test" currTime="200" /> */}
         <List
           items={vids}
-          renderItem={(
-            title: string,
-            currTime: number,
-            totalTime: number,
-            perc: string,
-            vidId: string,
-            sessions: TabAndWindowID[],
-            isCurrent: boolean
-          ) => (
+          renderItem={(props) => (
             <Row
-              title={title}
-              currTime={currTime}
-              totalTime={totalTime}
-              perc={perc}
-              vidId={vidId}
-              sessions={sessions}
-              isCurrent={isCurrent}
+              title={props.title}
+              currTime={props.currTime}
+              totalTime={props.totalTime}
+              perc={props.perc}
+              vidId={props.vidId}
+              sessions={props.sessions}
+              isCurrent={props.isCurrent}
             />
           )}
         />

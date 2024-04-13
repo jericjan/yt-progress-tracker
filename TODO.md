@@ -8,17 +8,17 @@ Project Description
 
 - [ ] use chrome.scripting instead of inject()  
 - [ ] chrome.tabs.getCurrent is a thing??  
-- [ ] clean up VideoInfo type  
 - [ ] display sorted by date added  
 - [ ] add css progress bar to each item  
 - [ ] add option to view all currently open YT tabs  
 - [ ] btn for reset time for video  
 - [ ] migrate to types instead of interfaces  
-- [ ] remove waitforProperty  
 - [ ] handle when multiple tabs of same vid  
+- [ ] remove waitforProperty  
 
 ### In Progress
 
+- [ ] clean up VideoInfo type  
 
 ### Done ✓
 
