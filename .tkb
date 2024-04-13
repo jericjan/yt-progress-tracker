@@ -1,0 +1,78 @@
+{
+  "scope": "Workspace",
+  "tasks": {
+    "162rLrk-4JSs8ECiB-oRQ": {
+      "id": "162rLrk-4JSs8ECiB-oRQ",
+      "description": "use sweetalert2 for popups",
+      "columnId": "column-doing"
+    },
+    "-_NCv2RM0_XuGAnPeT6oy": {
+      "id": "-_NCv2RM0_XuGAnPeT6oy",
+      "description": "clear videos button\n",
+      "columnId": "column-todo"
+    },
+    "O5QaB6wHs421oAyoq1ssM": {
+      "id": "O5QaB6wHs421oAyoq1ssM",
+      "description": "if multiple tabs of same id, ask to delete if clicked on one",
+      "columnId": "column-todo"
+    },
+    "ElPn7ctIUxqFyCmyFkXsw": {
+      "id": "ElPn7ctIUxqFyCmyFkXsw",
+      "description": "use chrome.scripting instead of inject()",
+      "columnId": "column-todo"
+    },
+    "RBcHnyn35MkfxqYEWWeh5": {
+      "id": "RBcHnyn35MkfxqYEWWeh5",
+      "description": "chrome.tabs.getCurrent is a thing??",
+      "columnId": "column-todo"
+    },
+    "fDdqV5MYpT1Deis857oPV": {
+      "id": "fDdqV5MYpT1Deis857oPV",
+      "description": "add css progress bar to each item",
+      "columnId": "column-todo"
+    },
+    "rgzPIujxflAHCKqw3YUXV": {
+      "id": "rgzPIujxflAHCKqw3YUXV",
+      "description": "migrate to types instead of interfaces",
+      "columnId": "column-todo"
+    },
+    "vpE0SqKao_KFZ13uC-2Vu": {
+      "id": "vpE0SqKao_KFZ13uC-2Vu",
+      "description": "remove waitforProperty",
+      "columnId": "column-todo"
+    },
+    "dB2zuKG59LzL3iZgcxtOJ": {
+      "id": "dB2zuKG59LzL3iZgcxtOJ",
+      "description": "keyboard shortcuts",
+      "columnId": "column-todo"
+    }
+  },
+  "columns": [
+    {
+      "id": "column-todo",
+      "title": "To do",
+      "tasksIds": [
+        "-_NCv2RM0_XuGAnPeT6oy",
+        "O5QaB6wHs421oAyoq1ssM",
+        "ElPn7ctIUxqFyCmyFkXsw",
+        "RBcHnyn35MkfxqYEWWeh5",
+        "fDdqV5MYpT1Deis857oPV",
+        "rgzPIujxflAHCKqw3YUXV",
+        "vpE0SqKao_KFZ13uC-2Vu",
+        "dB2zuKG59LzL3iZgcxtOJ"
+      ]
+    },
+    {
+      "id": "column-doing",
+      "title": "Doing",
+      "tasksIds": [
+        "162rLrk-4JSs8ECiB-oRQ"
+      ]
+    },
+    {
+      "id": "column-done",
+      "title": "Done",
+      "tasksIds": []
+    }
+  ]
+}
