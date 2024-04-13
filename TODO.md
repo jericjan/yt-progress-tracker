@@ -20,6 +20,8 @@ Project Description
 
 ### Done ✓
 
+- [x] moving files around  
+- [x] absolute imports  
 - [x] display YT tabs not in storage  
 - [x] show message if empty in UI  
 - [x] display sorted by date added  

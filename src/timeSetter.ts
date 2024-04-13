@@ -1,5 +1,5 @@
-import { VIDEO_PLAYER_SELECTOR } from "./youtubeFuncs";
-import { waitforElem } from "./elemFuncs";
+import { VIDEO_PLAYER_SELECTOR } from "./modules/youtubeFuncs";
+import { waitforElem } from "./modules/elemFuncs";
 
 const timeParam = new URLSearchParams(location.href).get("t");
 

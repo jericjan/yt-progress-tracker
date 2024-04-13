@@ -2,12 +2,12 @@
 // - compiles to /static/js/stuff.js
 // - can't run chrome api stuff like chrome.storage
 
-import { waitforElem } from "./elemFuncs";
+import { waitforElem } from "./modules/elemFuncs";
 import {
   getVideoId,
   VIDEO_PLAYER_SELECTOR,
   monitorProgress,
-} from "./youtubeFuncs";
+} from "./modules/youtubeFuncs";
 
 console.log("i'm stuff (injected)");
 

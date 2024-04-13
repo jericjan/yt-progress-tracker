@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { PartialVideoInfo, VideoInfo, TabAndWindowID } from "./interfaces";
-import { getCurrentTab, findTabs, findUnstoredTabs } from "./tabManipulation";
+import { PartialVideoInfo, VideoInfo, TabAndWindowID } from "./modules/interfaces";
+import { getCurrentTab, findTabs, findUnstoredTabs } from "./modules/tabManipulation";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

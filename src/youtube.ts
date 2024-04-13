@@ -4,8 +4,8 @@
 // check if vid elem exists [x]
 //save it to storage [x]
 //notify user of progress
-import { PartialVideoInfo } from "./interfaces";
-import { VIDEO_PLAYER_SELECTOR } from "./youtubeFuncs";
+import { PartialVideoInfo } from "./modules/interfaces";
+import { VIDEO_PLAYER_SELECTOR } from "./modules/youtubeFuncs";
 
 // import { Method } from "@testing-library/react";
 console.log("I'm the content script");

@@ -1,7 +1,7 @@
 // i realize i don't actually need this anymore. will be removed soon.
 
-import { findTabs } from "./tabManipulation";
-import { TabAndWindowID } from "./interfaces";
+import { findTabs } from "./modules/tabManipulation";
+import { TabAndWindowID } from "./modules/interfaces";
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   console.log("Received message from content script:", message);
