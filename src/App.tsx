@@ -117,11 +117,19 @@ function List({ items, renderItem }: ListProps) {
     } else if (firstState == false && secondState == true) {
       return 1;
     } else if (firstSessCount == secondSessCount) {
-      return secondEpoch - firstEpoch
+      return secondEpoch - firstEpoch;
     } else {
       return secondSessCount - firstSessCount;
     }
   });
+
+  if (vidIds.length == 0) {
+    return (
+      <p className="msg-text">
+        Nothing yet. Watch some videos so you can view your progress here.
+      </p>
+    );
+  }
 
   return (
     <>

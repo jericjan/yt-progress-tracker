@@ -6,8 +6,6 @@ Project Description
 
 ### Todo
 
-- [ ] show message if empty in UI  
-- [ ] add option to view all currently open YT tabs  
 - [ ] btn for reset time for video  
 - [ ] clear videos button  
 - [ ] if multiple tabs of same id, ask to delete if clicked on one  
@@ -19,9 +17,11 @@ Project Description
 
 ### In Progress
 
+- [ ] display YT tabs not in storage  
 
 ### Done ✓
 
+- [x] show message if empty in UI  
 - [x] display sorted by date added  
 - [x] clean up VideoInfo type  
 - [x] add delete button in UI  
