@@ -4,7 +4,7 @@
     "162rLrk-4JSs8ECiB-oRQ": {
       "id": "162rLrk-4JSs8ECiB-oRQ",
       "description": "use sweetalert2 for popups",
-      "columnId": "column-doing"
+      "columnId": "column-done"
     },
     "-_NCv2RM0_XuGAnPeT6oy": {
       "id": "-_NCv2RM0_XuGAnPeT6oy",
@@ -65,14 +65,14 @@
     {
       "id": "column-doing",
       "title": "Doing",
-      "tasksIds": [
-        "162rLrk-4JSs8ECiB-oRQ"
-      ]
+      "tasksIds": []
     },
     {
       "id": "column-done",
       "title": "Done",
-      "tasksIds": []
+      "tasksIds": [
+        "162rLrk-4JSs8ECiB-oRQ"
+      ]
     }
   ]
 }

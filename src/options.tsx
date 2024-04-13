@@ -7,14 +7,14 @@ import { swalConfirm, swalBasic } from "modules/swal";
 function Options() {
   const click = () => {
     swalConfirm(
-      "Are you sure?",
       "All video progress data will be deleted.",
+      "Are you sure?",
       "Yes, delete it!"
     ).then((result) => {
       if (result.isConfirmed) {
         swalConfirm(
-          "Are you REALLY sure?",
           "Think about it.",
+          "Are you REALLY sure?",
           "Yes, I'm sure."
         ).then((result) => {
           if (result.isConfirmed) {

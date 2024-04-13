@@ -1,5 +1,6 @@
 import { RowProps, ListProps, PartialVideoInfo } from "modules/interfaces";
 import { formatTime } from "modules/mathStuff";
+import { swalConfirm } from "modules/swal";
 import { useRef, useState } from "react";
 
 function Row({
@@ -48,8 +49,11 @@ function Row({
 
   const deleteVid = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (confirm("Are you sure you want to delete this from storage?")) {
-        // decrements count
+    if (
+      (await swalConfirm("Are you sure you want to delete this from storage?"))
+        .isConfirmed
+    ) {
+      // decrements count
       changeVideoCount(-1);
 
       // remove elem
@@ -62,9 +66,11 @@ function Row({
 
       if (
         sessions.length > 0 &&
-        confirm(
-          "Do you also want to close all open tabs associated with this video?"
-        )
+        (
+          await swalConfirm(
+            "Do you also want to close all open tabs associated with this video?"
+          )
+        ).isConfirmed
       ) {
         for (const session of sessions) {
           chrome.tabs.remove(session.tabId as number);
@@ -142,7 +148,8 @@ function List({ items, renderItem }: ListProps) {
   if (vidIds.length == 0) {
     return (
       <p className="msg-text">
-        No progress saved yet. Watch some videos so you can view your progress here.
+        No progress saved yet. Watch some videos so you can view your progress
+        here.
       </p>
     );
   }

@@ -1,4 +1,5 @@
 import { UnstoredListProps, UnstoredRowProps } from "modules/interfaces";
+import { swalConfirm } from "modules/swal";
 import { useRef, useState } from "react";
 
 function UnstoredList({ items, renderItem }: UnstoredListProps) {
@@ -24,7 +25,13 @@ function UnstoredList({ items, renderItem }: UnstoredListProps) {
 }
 
 /** does not deal with dupes yet */
-function UnstoredRow({ title, vidId, tabId, windowId, changeTabCount }: UnstoredRowProps) {
+function UnstoredRow({
+  title,
+  vidId,
+  tabId,
+  windowId,
+  changeTabCount,
+}: UnstoredRowProps) {
   const listRef = useRef<any>(null);
 
   const click = async () => {
@@ -38,12 +45,12 @@ function UnstoredRow({ title, vidId, tabId, windowId, changeTabCount }: Unstored
 
   const deleteVid = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (confirm("Do you want to close this tab?")) {
+    if ((await swalConfirm("Do you want to close this tab?")).isConfirmed) {
       chrome.tabs.remove(tabId as number);
       if (listRef.current) {
         listRef.current.remove();
       }
-      changeTabCount(-1)
+      changeTabCount(-1);
     }
   };
 
