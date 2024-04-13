@@ -28,6 +28,7 @@ function App({ vids, unstored }: AppProps) {
               epoch={props.epoch}
               sessions={props.sessions}
               isCurrent={props.isCurrent}
+              changeVideoCount={props.changeVideoCount}
             />
           )}
         />
@@ -41,6 +42,7 @@ function App({ vids, unstored }: AppProps) {
               title={props.title}
               tabId={props.tabId}
               windowId={props.windowId}
+              changeTabCount={props.changeTabCount}
             />
           )}
         />

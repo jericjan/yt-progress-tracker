@@ -14,7 +14,7 @@ interface PartialVideoInfo {
     totalTime: number;
     epoch: number;
     sessions?: TabAndWindowID[];
-    isCurrent?: boolean;    
+    isCurrent?: boolean;
   };
 }
 
@@ -30,10 +30,7 @@ type VideoInfo = {
   };
 };
 
-
-type renderItemFunc = (
-  props: RowProps
-) => JSX.Element;
+type renderItemFunc = (props: RowProps) => JSX.Element;
 
 /**basically looks the same as {@link VideoInfo} except no nesting and an extra key */
 type RowProps = {
@@ -43,8 +40,9 @@ type RowProps = {
   totalTime: number;
   perc: string;
   epoch: number;
-  sessions: TabAndWindowID[]
+  sessions: TabAndWindowID[];
   isCurrent: boolean;
+  changeVideoCount: (amount: number) => void;
 };
 
 type ListProps = {
@@ -59,24 +57,35 @@ interface TabAndWindowID {
 
 type AppProps = {
   vids: VideoInfo;
-  unstored: UnstoredTab[]
+  unstored: UnstoredTab[];
 };
 
-type renderUnstoredItemFunc = (
-  props: UnstoredRowProps
-) => JSX.Element;
+type renderUnstoredItemFunc = (props: UnstoredRowProps) => JSX.Element;
 
 type UnstoredListProps = {
   items: UnstoredTab[];
   renderItem: renderUnstoredItemFunc;
 };
 
-type UnstoredRowProps = UnstoredTab;
-
 interface UnstoredTab extends TabAndWindowID {
   title: string;
   vidId: string;
-} 
+}
+
+interface UnstoredRowProps extends UnstoredTab {
+  changeTabCount: (amount: number) => void;
+}
+
+interface Stuff {
+  name: string
+}
+
+interface MoreStuff extends Stuff {
+  age: number
+}
+
+const guy: Stuff = {name: 'John'};
+(guy as MoreStuff).age = 20;
 
 export {
   type TabContainerElem,
@@ -89,5 +98,5 @@ export {
   type renderItemFunc,
   type UnstoredTab,
   type UnstoredListProps,
-  type UnstoredRowProps
+  type UnstoredRowProps,
 };

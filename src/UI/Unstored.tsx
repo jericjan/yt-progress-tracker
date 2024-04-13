@@ -1,22 +1,30 @@
 import { UnstoredListProps, UnstoredRowProps } from "modules/interfaces";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 function UnstoredList({ items, renderItem }: UnstoredListProps) {
+  const [tabCount, setTabCount] = useState(items.length);
+
+  const changeTabCount = (amount: number) => {
+    setTabCount(tabCount + amount);
+  };
+
   if (items.length == 0) {
     return <></>;
   }
   return (
     <>
-      <p className="msg-text">Unstored Opened Tabs</p>
+      <p className="msg-text">Unstored Opened Tabs ({tabCount})</p>
       {items.map((unstoredTab) => {
-        return renderItem(unstoredTab);
+        const rowProps = unstoredTab as UnstoredRowProps;
+        rowProps.changeTabCount = changeTabCount;
+        return renderItem(rowProps);
       })}
     </>
   );
 }
 
 /** does not deal with dupes yet */
-function UnstoredRow({ title, vidId, tabId, windowId }: UnstoredRowProps) {
+function UnstoredRow({ title, vidId, tabId, windowId, changeTabCount }: UnstoredRowProps) {
   const listRef = useRef<any>(null);
 
   const click = async () => {
@@ -30,11 +38,12 @@ function UnstoredRow({ title, vidId, tabId, windowId }: UnstoredRowProps) {
 
   const deleteVid = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (confirm("Do you want to close tab(s)?")) {
+    if (confirm("Do you want to close this tab?")) {
       chrome.tabs.remove(tabId as number);
       if (listRef.current) {
         listRef.current.remove();
       }
+      changeTabCount(-1)
     }
   };
 
@@ -62,4 +71,4 @@ function UnstoredRow({ title, vidId, tabId, windowId }: UnstoredRowProps) {
   );
 }
 
-export {UnstoredList, UnstoredRow}
+export { UnstoredList, UnstoredRow };

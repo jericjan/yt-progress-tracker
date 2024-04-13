@@ -10,6 +10,7 @@ function Row({
   perc,
   sessions,
   isCurrent,
+  changeVideoCount,
 }: RowProps) {
   const listRef = useRef<any>(null);
   const [currTimeState, setCurrTimeState] = useState(currTime);
@@ -48,6 +49,9 @@ function Row({
   const deleteVid = async (e: React.MouseEvent) => {
     e.stopPropagation();
     if (confirm("Are you sure you want to delete this from storage?")) {
+        // decrements count
+      changeVideoCount(-1);
+
       // remove elem
       if (listRef.current) {
         listRef.current.remove();
@@ -71,7 +75,7 @@ function Row({
 
   const resetTime = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrTimeState(0)
+    setCurrTimeState(0);
     const vidInfo: PartialVideoInfo = {
       [vidId]: {
         title: title,
@@ -97,7 +101,7 @@ function Row({
           <p className="time">{`${formatTime(currTimeState)} / ${formatTime(
             totalTime
           )} (${perc})`}</p>
-          <p className="tab-count">{sessions.length}</p>
+          <p className="tab-count">Tab Count: {sessions.length}</p>
           <button onClick={resetTime}>Reset Time</button>
           <button onClick={deleteVid}>Delete</button>
         </div>
@@ -108,6 +112,11 @@ function Row({
 
 function List({ items, renderItem }: ListProps) {
   const vidIds = Object.keys(items);
+  const [videoCount, setVideoCount] = useState(vidIds.length);
+
+  const changeVideoCount = (amount: number) => {
+    setVideoCount(videoCount + amount);
+  };
 
   vidIds.sort((first, second) => {
     const firstState = items[first].isCurrent;
@@ -133,14 +142,14 @@ function List({ items, renderItem }: ListProps) {
   if (vidIds.length == 0) {
     return (
       <p className="msg-text">
-        Nothing yet. Watch some videos so you can view your progress here.
+        No progress saved yet. Watch some videos so you can view your progress here.
       </p>
     );
   }
 
   return (
     <>
-      <p className="msg-text">Saved Tabs</p>
+      <p className="msg-text">Saved Videos ({videoCount})</p>
       {vidIds.map((vidId) => {
         const contents = items[vidId];
         const { title, currTime, totalTime, sessions, isCurrent, epoch } =
@@ -154,6 +163,7 @@ function List({ items, renderItem }: ListProps) {
           epoch: epoch,
           sessions: sessions,
           isCurrent: isCurrent,
+          changeVideoCount: changeVideoCount,
         });
       })}
     </>

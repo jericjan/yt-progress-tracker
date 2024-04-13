@@ -6,6 +6,7 @@ Project Description
 
 ### Todo
 
+
 - [ ] clear videos button  
 - [ ] if multiple tabs of same id, ask to delete if clicked on one  
 - [ ] use chrome.scripting instead of inject()  
@@ -13,12 +14,17 @@ Project Description
 - [ ] add css progress bar to each item  
 - [ ] migrate to types instead of interfaces  
 - [ ] remove waitforProperty  
+- [ ] keyboard shortcuts  
 
 ### In Progress
+
+- [ ] use sweetalert2 for popups  
 
 
 ### Done ✓
 
+- [x] popup now only uses main.js  
+- [x] show total tab count across all videos  
 - [x] removes trailing "- YouTube"  
 - [x] btn for reset time for video  
 - [x] moving files around  
