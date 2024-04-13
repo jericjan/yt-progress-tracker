@@ -19,6 +19,7 @@ Project Description
 
 ### Done ✓
 
+- [x] removes trailing "- YouTube"  
 - [x] btn for reset time for video  
 - [x] moving files around  
 - [x] absolute imports  

@@ -32,8 +32,18 @@ async function findUnstoredTabs(storedVidIds: string[]) {
     return !storedVidIds.includes(currentVidId)
   })
   return unstoredTabs.map((tab)=>{
+
+    const strippedTitle = (()=>{
+      const matchStr = ' - YouTube'
+      const title = tab.title
+      if (title?.endsWith(matchStr)){
+          return title.slice(0, -matchStr.length)
+      }
+      return title
+    })()
+
     return <UnstoredTab>{
-      title: tab.title,
+      title: strippedTitle,
       vidId: getVideoId(tab.url),
       tabId: tab.id,
       windowId: tab.windowId
