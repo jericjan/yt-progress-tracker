@@ -23,6 +23,7 @@ Project Description
 
 ### Done ✓
 
+- [x] use history and a 2nd injected script to change time  
 - [x] also set video time when clicked  
 - [x] put videos with existing tabs higher on the list  
 - [x] add Yt thumb as icon to ext UI  

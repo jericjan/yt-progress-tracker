@@ -10,13 +10,9 @@ import { VIDEO_PLAYER_SELECTOR } from "./youtubeFuncs";
 // import { Method } from "@testing-library/react";
 console.log("I'm the content script");
 
-function inject(custom?: string) {
+function inject(scriptName: string) {
   var s = document.createElement("script");
-  if (custom) {
-    s.textContent = custom;
-  } else {
-    s.src = chrome.runtime.getURL("./static/js/stuff.js"); //this is injected.ts
-  }
+  s.src = chrome.runtime.getURL(scriptName); //this is injected.ts
 
   s.onload = function () {
     s.remove();
@@ -80,11 +76,17 @@ function main() {
 
   chrome.runtime.onMessage.addListener(
     function(message, sender, sendResponse) {
-      window.location.href = message
+
+      // window.location.href = message
+
+      const url = new URL(location.href);
+      url.searchParams.set("t", message);
+      history.pushState({}, "", url);
+      inject("./static/js/timeSetter.js");
     }
   );
 
-  inject();
+  inject("./static/js/stuff.js"); // this is inject
 }
 
 main();

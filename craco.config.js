@@ -7,7 +7,8 @@ module.exports = {
                     main: [env === 'development' && require.resolve('react-dev-utils/webpackHotDevClient'),paths.appIndexJs].filter(Boolean),
                     content: './src/youtube.ts',
                     stuff: './src/injected.ts',
-                    sw: './src/sw.ts'
+                    sw: './src/sw.ts',
+                    timeSetter: './src/timeSetter.ts'
                 },
                 output: {
                     ...webpackConfig.output,

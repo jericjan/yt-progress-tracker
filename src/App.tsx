@@ -26,13 +26,10 @@ function Row({
 
       if (isCurrent) {
         // document.dispatchEvent(new CustomEvent("ytSetVideoTime", { detail: Math.floor(currTime) }));
-        if (
-          confirm(
-            "The page will now be refreshed with the saved timestamp. Continue?"
-          )
-        ) {
-          await chrome.tabs.sendMessage(sessions[0].tabId as number, timedUrl);
-        }
+        await chrome.tabs.sendMessage(
+          sessions[0].tabId as number,
+          Math.floor(currTime)
+        );
       } else {
         const firstMatch = sessions[0];
 
