@@ -105,12 +105,19 @@ function List({ items, renderItem }: ListProps) {
   vidIds.sort((first, second) => {
     const firstState = items[first].isCurrent;
     const secondState = items[second].isCurrent;
+
     const firstSessCount = items[first].sessions.length;
     const secondSessCount = items[second].sessions.length;
+
+    const firstEpoch = items[first].epoch;
+    const secondEpoch = items[second].epoch;
+
     if (firstState == true && secondState == false) {
       return -1;
     } else if (firstState == false && secondState == true) {
       return 1;
+    } else if (firstSessCount == secondSessCount) {
+      return secondEpoch - firstEpoch
     } else {
       return secondSessCount - firstSessCount;
     }
@@ -120,13 +127,15 @@ function List({ items, renderItem }: ListProps) {
     <>
       {vidIds.map((vidId) => {
         const contents = items[vidId];
-        const { title, currTime, totalTime, sessions, isCurrent } = contents;
+        const { title, currTime, totalTime, sessions, isCurrent, epoch } =
+          contents;
         return renderItem({
+          vidId: vidId,
           title: title,
           currTime: currTime,
           totalTime: totalTime,
           perc: ((currTime / totalTime) * 100).toFixed(2) + "%",
-          vidId: vidId,
+          epoch: epoch,
           sessions: sessions,
           isCurrent: isCurrent,
         });
@@ -148,11 +157,12 @@ function App({ vids }: AppProps) {
           items={vids}
           renderItem={(props) => (
             <Row
+              vidId={props.vidId}
               title={props.title}
               currTime={props.currTime}
               totalTime={props.totalTime}
               perc={props.perc}
-              vidId={props.vidId}
+              epoch={props.epoch}
               sessions={props.sessions}
               isCurrent={props.isCurrent}
             />

@@ -12,18 +12,11 @@ interface PartialVideoInfo {
     title: string;
     currTime: number;
     totalTime: number;
+    epoch: number;
     sessions?: TabAndWindowID[];
     isCurrent?: boolean;    
   };
 }
-
-// interface VideoInfo extends PartialVideoInfo {
-//   [x: string]: {
-//     title: string;
-//     currTime: number;
-//     session: TabAndWindowID[];
-//   };
-// }
 
 /** Video info variable that should be created after modifying after getting from storage */
 type VideoInfo = {
@@ -31,32 +24,25 @@ type VideoInfo = {
     title: string;
     currTime: number;
     totalTime: number;
+    epoch: number;
     sessions: TabAndWindowID[];
     isCurrent: boolean;
   };
 };
 
-// type renderItemFunc = (
-//   title: string,
-//   currTime: number,
-//   totalTime: number,
-//   perc: string,
-//   vidId: string,
-//   sessions: TabAndWindowID[],
-//   isCurrent: boolean
-// ) => JSX.Element;
 
 type renderItemFunc = (
   props: RowProps
 ) => JSX.Element;
 
-/**basically looks the same as {@link VideoInfo} expect no nesting and an extra key */
+/**basically looks the same as {@link VideoInfo} except no nesting and an extra key */
 type RowProps = {
   vidId: string;
   title: string;
   currTime: number;
   totalTime: number;
   perc: string;
+  epoch: number;
   sessions: TabAndWindowID[]
   isCurrent: boolean;
 };

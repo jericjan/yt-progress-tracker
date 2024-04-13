@@ -6,22 +6,24 @@ Project Description
 
 ### Todo
 
-- [ ] use chrome.scripting instead of inject()  
-- [ ] chrome.tabs.getCurrent is a thing??  
-- [ ] display sorted by date added  
-- [ ] add css progress bar to each item  
+- [ ] show message if empty in UI  
 - [ ] add option to view all currently open YT tabs  
 - [ ] btn for reset time for video  
+- [ ] clear videos button  
+- [ ] if multiple tabs of same id, ask to delete if clicked on one  
+- [ ] use chrome.scripting instead of inject()  
+- [ ] chrome.tabs.getCurrent is a thing??  
+- [ ] add css progress bar to each item  
 - [ ] migrate to types instead of interfaces  
-- [ ] handle when multiple tabs of same vid  
 - [ ] remove waitforProperty  
 
 ### In Progress
 
-- [ ] clean up VideoInfo type  
 
 ### Done ✓
 
+- [x] display sorted by date added  
+- [x] clean up VideoInfo type  
 - [x] add delete button in UI  
 - [x] use history and a 2nd injected script to change time  
 - [x] also set video time when clicked  

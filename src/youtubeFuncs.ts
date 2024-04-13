@@ -40,7 +40,7 @@ async function monitorProgress() {
   const title = videoData["title"];
   // const currTab = await getCurrentTab(); // won't work here. moved to content script.
   const vidInfo: PartialVideoInfo = {
-    [vidId]: { title: title, currTime: currentTime, totalTime: totalTime },
+    [vidId]: { title: title, currTime: currentTime, totalTime: totalTime, epoch: Date.now() },
   };
   console.log("Saving...", vidInfo);
   document.dispatchEvent(new CustomEvent("ytSendProg", { detail: vidInfo }));
