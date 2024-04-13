@@ -10,7 +10,6 @@ Project Description
 - [ ] chrome.tabs.getCurrent is a thing??  
 - [ ] clean up VideoInfo type  
 - [ ] display sorted by date added  
-- [ ] add delete button in UI  
 - [ ] add css progress bar to each item  
 - [ ] add option to view all currently open YT tabs  
 - [ ] btn for reset time for video  
@@ -23,6 +22,7 @@ Project Description
 
 ### Done ✓
 
+- [x] add delete button in UI  
 - [x] use history and a 2nd injected script to change time  
 - [x] also set video time when clicked  
 - [x] put videos with existing tabs higher on the list  

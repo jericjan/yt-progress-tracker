@@ -2,6 +2,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import { RowProps, AppProps, ListProps, TabAndWindowID } from "./interfaces";
 import { formatTime } from "./mathStuff";
+import { useRef } from "react";
+
 function Row({
   title,
   currTime,
@@ -11,6 +13,8 @@ function Row({
   sessions,
   isCurrent,
 }: RowProps) {
+  const listRef = useRef<any>(null);
+
   const click = async () => {
     // const matchedTabs = await findTab(vidId);
 
@@ -43,8 +47,32 @@ function Row({
     }
   };
 
+  const deleteVid = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (confirm("Are you sure you want to delete this from storage?")) {
+      // remove elem
+      if (listRef.current) {
+        listRef.current.remove();
+      }
+
+      // remove from storage
+      await chrome.storage.local.remove(vidId);
+
+      if (
+        sessions.length > 0 &&
+        confirm(
+          "Do you also want to close all open tabs associated with this video?"
+        )
+      ) {
+        for (const session of sessions) {
+          chrome.tabs.remove(session.tabId as number);
+        }
+      }
+    }
+  };
+
   return (
-    <li>
+    <li ref={listRef}>
       <a className="tabContainer" onClick={click}>
         <div className="iconDiv">
           <img
@@ -58,6 +86,13 @@ function Row({
             totalTime
           )} (${perc})`}</p>
           <p className="tab-count">{sessions.length}</p>
+          <button
+            onClick={(e) => {
+              deleteVid(e);
+            }}
+          >
+            Delete
+          </button>
         </div>
       </a>
     </li>
