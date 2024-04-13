@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { PartialVideoInfo, VideoInfo, TabAndWindowID } from "./interfaces";
-import { getCurrentTab, findTabs } from "./tabManipulation";
+import { getCurrentTab, findTabs, findUnstoredTabs } from "./tabManipulation";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -23,6 +23,8 @@ const root = ReactDOM.createRoot(
 (async () => {
   const savedVods: PartialVideoInfo = await chrome.storage.local.get()
 
+// saveVods does not have tab and window info
+
   for (const vidId in savedVods) {
     const matchedTabs = await findTabs(vidId);
     const sessions = matchedTabs.map((x)=> {return {tabId: x.id, windowId: x.windowId} as TabAndWindowID})
@@ -31,12 +33,15 @@ const root = ReactDOM.createRoot(
     savedVods[vidId].isCurrent = sessions.some((x) => {
       return x.tabId == currTab.id;
     });    
-    
   }
+
+// saveVods now has tab and window info
+
+  const unstoredTabs = await findUnstoredTabs(Object.keys(savedVods))
 
   root.render(
     <React.StrictMode>
-      <App vids={savedVods as VideoInfo}/>
+      <App vids={savedVods as VideoInfo} unstored={unstoredTabs}/>
     </React.StrictMode>
   );
 })();

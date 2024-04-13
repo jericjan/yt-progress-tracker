@@ -6,7 +6,6 @@ Project Description
 
 ### Todo
 
-- [ ] btn for reset time for video  
 - [ ] clear videos button  
 - [ ] if multiple tabs of same id, ask to delete if clicked on one  
 - [ ] use chrome.scripting instead of inject()  
@@ -17,10 +16,11 @@ Project Description
 
 ### In Progress
 
-- [ ] display YT tabs not in storage  
+- [ ] btn for reset time for video  
 
 ### Done ✓
 
+- [x] display YT tabs not in storage  
 - [x] show message if empty in UI  
 - [x] display sorted by date added  
 - [x] clean up VideoInfo type  

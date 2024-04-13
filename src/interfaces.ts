@@ -47,22 +47,36 @@ type RowProps = {
   isCurrent: boolean;
 };
 
+type ListProps = {
+  items: VideoInfo;
+  renderItem: renderItemFunc;
+};
 
 interface TabAndWindowID {
   tabId: number | undefined;
   windowId: number;
 }
 
-
-
 type AppProps = {
   vids: VideoInfo;
+  unstored: UnstoredTab[]
 };
 
-type ListProps = {
-  items: VideoInfo;
-  renderItem: renderItemFunc;
+type renderUnstoredItemFunc = (
+  props: UnstoredRowProps
+) => JSX.Element;
+
+type UnstoredListProps = {
+  items: UnstoredTab[];
+  renderItem: renderUnstoredItemFunc;
 };
+
+type UnstoredRowProps = UnstoredTab;
+
+interface UnstoredTab extends TabAndWindowID {
+  title: string;
+  vidId: string;
+} 
 
 export {
   type TabContainerElem,
@@ -72,5 +86,8 @@ export {
   type RowProps,
   type AppProps,
   type ListProps,
-  type renderItemFunc
+  type renderItemFunc,
+  type UnstoredTab,
+  type UnstoredListProps,
+  type UnstoredRowProps
 };
