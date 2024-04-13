@@ -2,10 +2,15 @@ import Swal, { SweetAlertIcon } from "sweetalert2";
 
 const DEFAULTS = {
   heightAuto: false,
-  scrollbarPadding: false
+  scrollbarPadding: false,
 };
 
-export function swalConfirm(desc: string, title: string = "Confirm?", confirmText: string = "Yes") {
+export function swalConfirm(
+  desc: string,
+  title: string = "Confirm?",
+  confirmText: string = "Yes",
+  cancelText: string = "Cancel"
+) {
   return Swal.fire({
     title: title,
     text: desc,
@@ -14,6 +19,7 @@ export function swalConfirm(desc: string, title: string = "Confirm?", confirmTex
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
     confirmButtonText: confirmText,
+    cancelButtonText: cancelText,
     ...DEFAULTS,
   });
 }

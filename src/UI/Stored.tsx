@@ -28,19 +28,35 @@ function Row({
     } else {
       // TODO: handle if more than one tab
 
+      const [firstTab, ...otherTabs] = sessions;
+
+      if (sessions.length > 1) {
+        if (
+          (
+            await swalConfirm(
+              "There is more than one tab. Do you want to close the duplicates?",
+              "Delete dupes?","Yes","No"
+            )
+          ).isConfirmed
+        ) {
+
+          for (const tab of otherTabs) {
+            chrome.tabs.remove(tab.tabId as number);
+          }
+        }
+      }
+
       if (isCurrent) {
         // document.dispatchEvent(new CustomEvent("ytSetVideoTime", { detail: Math.floor(currTime) }));
         await chrome.tabs.sendMessage(
-          sessions[0].tabId as number,
+          firstTab.tabId as number,
           Math.floor(currTime)
         );
       } else {
-        const firstMatch = sessions[0];
-
-        await chrome.tabs.update(firstMatch.tabId as number, {
+        await chrome.tabs.update(firstTab.tabId as number, {
           active: true,
         });
-        await chrome.windows.update(firstMatch.windowId, {
+        await chrome.windows.update(firstTab.windowId, {
           focused: true,
         });
       }

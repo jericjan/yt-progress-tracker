@@ -9,12 +9,12 @@
     "-_NCv2RM0_XuGAnPeT6oy": {
       "id": "-_NCv2RM0_XuGAnPeT6oy",
       "description": "clear videos button\n",
-      "columnId": "column-todo"
+      "columnId": "column-done"
     },
     "O5QaB6wHs421oAyoq1ssM": {
       "id": "O5QaB6wHs421oAyoq1ssM",
       "description": "if multiple tabs of same id, ask to delete if clicked on one",
-      "columnId": "column-todo"
+      "columnId": "column-done"
     },
     "ElPn7ctIUxqFyCmyFkXsw": {
       "id": "ElPn7ctIUxqFyCmyFkXsw",
@@ -45,6 +45,16 @@
       "id": "dB2zuKG59LzL3iZgcxtOJ",
       "description": "keyboard shortcuts",
       "columnId": "column-todo"
+    },
+    "14RBbNMkQVAWvMdF6Dik6": {
+      "id": "14RBbNMkQVAWvMdF6Dik6",
+      "description": "🐞 wrong tab gets set when clicking on item with multiple tabs\n",
+      "columnId": "column-doing"
+    },
+    "iReS_vF4kKp3twjuSSHrT": {
+      "id": "iReS_vF4kKp3twjuSSHrT",
+      "description": "change mouse to link thing when hovering over items\n",
+      "columnId": "column-doing"
     }
   },
   "columns": [
@@ -52,25 +62,28 @@
       "id": "column-todo",
       "title": "To do",
       "tasksIds": [
-        "-_NCv2RM0_XuGAnPeT6oy",
-        "O5QaB6wHs421oAyoq1ssM",
+        "fDdqV5MYpT1Deis857oPV",
+        "dB2zuKG59LzL3iZgcxtOJ",
         "ElPn7ctIUxqFyCmyFkXsw",
         "RBcHnyn35MkfxqYEWWeh5",
-        "fDdqV5MYpT1Deis857oPV",
         "rgzPIujxflAHCKqw3YUXV",
-        "vpE0SqKao_KFZ13uC-2Vu",
-        "dB2zuKG59LzL3iZgcxtOJ"
+        "vpE0SqKao_KFZ13uC-2Vu"
       ]
     },
     {
       "id": "column-doing",
       "title": "Doing",
-      "tasksIds": []
+      "tasksIds": [
+        "14RBbNMkQVAWvMdF6Dik6",
+        "iReS_vF4kKp3twjuSSHrT"
+      ]
     },
     {
       "id": "column-done",
       "title": "Done",
       "tasksIds": [
+        "O5QaB6wHs421oAyoq1ssM",
+        "-_NCv2RM0_XuGAnPeT6oy",
         "162rLrk-4JSs8ECiB-oRQ"
       ]
     }
