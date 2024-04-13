@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { PartialVideoInfo, VideoInfo, TabAndWindowID } from "./interfaces";
-import { getCurrentTab, findTab } from "./tabManipulation";
+import { getCurrentTab, findTabs } from "./tabManipulation";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -24,7 +24,7 @@ const root = ReactDOM.createRoot(
   const savedVods: PartialVideoInfo = await chrome.storage.local.get()
 
   for (const vidId in savedVods) {
-    const matchedTabs = await findTab(vidId);
+    const matchedTabs = await findTabs(vidId);
     const sessions = matchedTabs.map((x)=> {return {tabId: x.id, windowId: x.windowId} as TabAndWindowID})
     savedVods[vidId].sessions = sessions
     const currTab = await getCurrentTab();
