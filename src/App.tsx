@@ -1,4 +1,5 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
+import {ReactComponent as NewLogo} from "./neon.svg"
 import "./App.css";
 import {
   AppProps,
@@ -12,7 +13,8 @@ function App({ vids, unstored }: AppProps) {
     <div className="App">
       <header className="App-header">
         <h1>YouTube Progress Tracker</h1>
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <NewLogo className="App-logo" alt="logo"/>
       </header>
       <hr></hr>
       <ul id="visible-ul">

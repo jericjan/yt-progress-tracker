@@ -110,6 +110,11 @@
       "id": "YZUg5X4gd8xC8HUVc6hTx",
       "description": "make ui icons glow\n",
       "columnId": "column-doing"
+    },
+    "UIr0AFlSAgQSx2iDRRvFx": {
+      "id": "UIr0AFlSAgQSx2iDRRvFx",
+      "description": "anime.js for rotating logo?\n",
+      "columnId": "column-todo"
     }
   },
   "columns": [
@@ -120,6 +125,7 @@
         "KhTR9oiLujfzJuMN5Oo0O",
         "dB2zuKG59LzL3iZgcxtOJ",
         "_kmxKr9I0wXcR4jdblzhW",
+        "UIr0AFlSAgQSx2iDRRvFx",
         "3BJNDtmF4hZczYUJ7XtUu",
         "Fi1U3y_EpVVXOj7NVDYGw",
         "dHXraySNnwPkSRV35xtrZ",
