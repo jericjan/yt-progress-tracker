@@ -40,10 +40,13 @@ body {
   width: 600px;
   height: 400px;
   background-color: #282c34;
+  font-size: 75%;
+  /* chrome extension popups do that for some reason, so setting it here to also work in local testing */
 }
 
 ul {
   list-style-type: none;
+  padding-inline-start: 0;
 }
 
 li {
@@ -59,4 +62,27 @@ li {
 .msg-text {
   font-size: calc(10px + 2vmin);
   color: #fff;
+}
+
+.tabContents {
+  width: 100%;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.thumb {
+  border-radius: 10px;
+}
+
+.iconDiv {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+
+#unstored-ul > li {
+  padding-bottom: 10px;
 }

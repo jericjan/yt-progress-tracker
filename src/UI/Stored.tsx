@@ -2,6 +2,8 @@ import { RowProps, ListProps, PartialVideoInfo } from "modules/interfaces";
 import { formatTime } from "modules/mathStuff";
 import { swalConfirm } from "modules/swal";
 import { useRef, useState } from "react";
+import { ReactComponent as TrashIcon } from "icons/trash.svg";
+import { ReactComponent as ResetIcon } from "icons/reset.svg";
 
 function Row({
   title,
@@ -35,11 +37,12 @@ function Row({
           (
             await swalConfirm(
               "There is more than one tab. Do you want to close the duplicates?",
-              "Delete dupes?","Yes","No"
+              "Delete dupes?",
+              "Yes",
+              "No"
             )
           ).isConfirmed
         ) {
-
           for (const tab of otherTabs) {
             chrome.tabs.remove(tab.tabId as number);
           }
@@ -114,7 +117,7 @@ function Row({
       <a className="tabContainer" onClick={click}>
         <div className="iconDiv">
           <img
-            className="icon"
+            className="thumb"
             src={`https://i.ytimg.com/vi/${vidId}/default.jpg`}
           />
         </div>
@@ -124,8 +127,10 @@ function Row({
             totalTime
           )} (${perc})`}</p>
           <p className="tab-count">Tab Count: {sessions.length}</p>
-          <button onClick={resetTime}>Reset Time</button>
-          <button onClick={deleteVid}>Delete</button>
+          <ResetIcon onClick={resetTime} className="icon" stroke="#ffc93a"/>
+          <TrashIcon onClick={deleteVid} className="icon" stroke="#e72323"/>
+          {/* <button onClick={resetTime}>Reset Time</button> */}
+          {/* <button onClick={deleteVid}>Delete</button> */}
         </div>
       </a>
     </li>

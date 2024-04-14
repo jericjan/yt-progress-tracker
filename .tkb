@@ -29,7 +29,7 @@
     "fDdqV5MYpT1Deis857oPV": {
       "id": "fDdqV5MYpT1Deis857oPV",
       "description": "add css progress bar to each item",
-      "columnId": "column-todo"
+      "columnId": "column-doing"
     },
     "rgzPIujxflAHCKqw3YUXV": {
       "id": "rgzPIujxflAHCKqw3YUXV",
@@ -65,6 +65,31 @@
       "id": "Fi1U3y_EpVVXOj7NVDYGw",
       "description": "make findUnstoredTabs use the same tab list from findTabs",
       "columnId": "column-todo"
+    },
+    "dHXraySNnwPkSRV35xtrZ": {
+      "id": "dHXraySNnwPkSRV35xtrZ",
+      "description": "# Refactoring\n",
+      "columnId": "column-todo"
+    },
+    "3BJNDtmF4hZczYUJ7XtUu": {
+      "id": "3BJNDtmF4hZczYUJ7XtUu",
+      "description": "# Optimization\n",
+      "columnId": "column-todo"
+    },
+    "KhTR9oiLujfzJuMN5Oo0O": {
+      "id": "KhTR9oiLujfzJuMN5Oo0O",
+      "description": "# Features\n",
+      "columnId": "column-todo"
+    },
+    "_kmxKr9I0wXcR4jdblzhW": {
+      "id": "_kmxKr9I0wXcR4jdblzhW",
+      "description": "change the icons\n",
+      "columnId": "column-todo"
+    },
+    "3phx4HPKWr-Q82WYv6neS": {
+      "id": "3phx4HPKWr-Q82WYv6neS",
+      "description": "change ui buttons with icons\n",
+      "columnId": "column-doing"
     }
   },
   "columns": [
@@ -72,19 +97,25 @@
       "id": "column-todo",
       "title": "To do",
       "tasksIds": [
-        "fDdqV5MYpT1Deis857oPV",
+        "KhTR9oiLujfzJuMN5Oo0O",
         "dB2zuKG59LzL3iZgcxtOJ",
+        "_kmxKr9I0wXcR4jdblzhW",
+        "3BJNDtmF4hZczYUJ7XtUu",
+        "Fi1U3y_EpVVXOj7NVDYGw",
+        "dHXraySNnwPkSRV35xtrZ",
         "ElPn7ctIUxqFyCmyFkXsw",
         "RBcHnyn35MkfxqYEWWeh5",
         "rgzPIujxflAHCKqw3YUXV",
-        "vpE0SqKao_KFZ13uC-2Vu",
-        "Fi1U3y_EpVVXOj7NVDYGw"
+        "vpE0SqKao_KFZ13uC-2Vu"
       ]
     },
     {
       "id": "column-doing",
       "title": "Doing",
-      "tasksIds": []
+      "tasksIds": [
+        "3phx4HPKWr-Q82WYv6neS",
+        "fDdqV5MYpT1Deis857oPV"
+      ]
     },
     {
       "id": "column-done",

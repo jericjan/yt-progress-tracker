@@ -1,7 +1,7 @@
 import { UnstoredListProps, UnstoredRowProps } from "modules/interfaces";
 import { swalConfirm } from "modules/swal";
 import { useRef, useState } from "react";
-
+import { ReactComponent as TrashIcon } from "icons/trash.svg";
 function UnstoredList({ items, renderItem }: UnstoredListProps) {
   const [tabCount, setTabCount] = useState(items.length);
 
@@ -59,19 +59,14 @@ function UnstoredRow({
       <a className="tabContainer" onClick={click}>
         <div className="iconDiv">
           <img
-            className="icon"
+            className="thumb"
             src={`https://i.ytimg.com/vi/${vidId}/default.jpg`}
           />
         </div>
         <div className="tabContents">
           <h3 className="title">{title}</h3>
-          <button
-            onClick={(e) => {
-              deleteVid(e);
-            }}
-          >
-            Delete
-          </button>
+
+          <TrashIcon onClick={deleteVid} className="icon" stroke="#e72323"/>
         </div>
       </a>
     </li>

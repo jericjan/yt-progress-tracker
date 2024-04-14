@@ -1,7 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-
-
 module.exports = {
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
@@ -12,11 +10,10 @@ module.exports = {
       webpackConfig.plugins = webpackConfig.plugins.map((x) => {
         const name = x?.constructor?.name;
         if (name == "HtmlWebpackPlugin") {
-            x.options.chunks = ['main']
+          x.options.chunks = ["main"];
         }
         return x;
       });
-
 
       return {
         ...webpackConfig,
