@@ -11,6 +11,7 @@ module.exports = {
         const name = x?.constructor?.name;
         if (name == "HtmlWebpackPlugin") {
           x.options.chunks = ["main"];
+          // console.log(JSON.stringify(x))
         }
         return x;
       });

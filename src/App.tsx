@@ -7,6 +7,7 @@ import {
 } from "./modules/interfaces";
 import { List, Row } from "./UI/Stored";
 import { UnstoredList, UnstoredRow } from "./UI/Unstored";
+import Anime from 'react-anime';
 
 function App({ vids, unstored }: AppProps) {
   return (
@@ -14,7 +15,9 @@ function App({ vids, unstored }: AppProps) {
       <header className="App-header">
         <h1>YouTube Progress Tracker</h1>
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <NewLogo className="App-logo" alt="logo"/>
+        <Anime loop={true} duration={3000} scale={[{value: 0.5, easing: 'linear'},1.0,0.75]}>
+        <NewLogo className="App-logo" />
+        </Anime>  
       </header>
       <hr></hr>
       <ul id="visible-ul">

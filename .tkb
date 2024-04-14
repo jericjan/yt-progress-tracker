@@ -104,12 +104,12 @@
     "Gw6LngdCGiSdbZfHRVAjf": {
       "id": "Gw6LngdCGiSdbZfHRVAjf",
       "description": "popup title header\n",
-      "columnId": "column-doing"
+      "columnId": "column-done"
     },
     "YZUg5X4gd8xC8HUVc6hTx": {
       "id": "YZUg5X4gd8xC8HUVc6hTx",
-      "description": "make ui icons glow\n",
-      "columnId": "column-doing"
+      "description": "❌make ui icons glow\n",
+      "columnId": "column-done"
     },
     "UIr0AFlSAgQSx2iDRRvFx": {
       "id": "UIr0AFlSAgQSx2iDRRvFx",
@@ -138,15 +138,14 @@
     {
       "id": "column-doing",
       "title": "Doing",
-      "tasksIds": [
-        "Gw6LngdCGiSdbZfHRVAjf",
-        "YZUg5X4gd8xC8HUVc6hTx"
-      ]
+      "tasksIds": []
     },
     {
       "id": "column-done",
       "title": "Done",
       "tasksIds": [
+        "YZUg5X4gd8xC8HUVc6hTx",
+        "Gw6LngdCGiSdbZfHRVAjf",
         "P2tudhh3f0oT1fDE4VMfI",
         "VWBrRKsvoMgLFp-ZQfWa7",
         "fDdqV5MYpT1Deis857oPV",
