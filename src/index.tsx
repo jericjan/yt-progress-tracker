@@ -3,16 +3,26 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { PartialVideoInfo, VideoInfo, TabAndWindowID } from "./modules/interfaces";
-import { getCurrentTab, findTabs, findUnstoredTabs } from "./modules/tabManipulation";
+import {
+  PartialVideoInfo,
+  VideoInfo,
+  TabAndWindowID,
+} from "./modules/interfaces";
+import {
+  getCurrentTab,
+  findTabs,
+  findUnstoredTabs,
+} from "./modules/tabManipulation";
+import { Timer } from "modules/mathStuff";
+
+reportWebVitals(console.log);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-
 // chrome.storage.local.get().then((saveVods) => {
-  
+
 //   root.render(
 //     <React.StrictMode>
 //       <App vids={saveVods as VideoInfo}/>
@@ -20,30 +30,56 @@ const root = ReactDOM.createRoot(
 //   );
 // });
 
+
+
+
 (async () => {
-  const savedVods: PartialVideoInfo = await chrome.storage.local.get()
+  const savedVods: PartialVideoInfo = await chrome.storage.local.get();
 
-// saveVods does not have tab and window info
-
+  // saveVods does not have tab and window info
+  const timer = new Timer()
   for (const vidId in savedVods) {
+    
+    // these two async funcs query tabs twice in total, doesn't seem to affect performance tho
     const matchedTabs = await findTabs(vidId);
-    const sessions = matchedTabs.map((x)=> {return {tabId: x.id, windowId: x.windowId} as TabAndWindowID})
-    savedVods[vidId].sessions = sessions
+    timer.log("findTabs")
     const currTab = await getCurrentTab();
-    savedVods[vidId].isCurrent = sessions.some((x) => {
-      return x.tabId == currTab.id;
-    });    
+    timer.log("getCurrenTab")
+    var currTabindex: number = -1;
+    const sessions = matchedTabs.map((x, idx) => {
+      if (x.id == currTab.id) {
+        currTabindex = idx;
+      }
+
+      return { tabId: x.id, windowId: x.windowId } as TabAndWindowID;
+    });
+    timer.log("mapped IDs and set currTabIndex")
+    savedVods[vidId].isCurrent = false;
+
+    if (currTabindex != -1) {
+      savedVods[vidId].isCurrent = true;
+      // current tab found in tab list
+      let removedItem = sessions.splice(currTabindex, 1)[0];
+      sessions.unshift(removedItem);
+      // moves that tab to the beginning of the list
+    }
+    timer.log("sorted currTab")
+
+    savedVods[vidId].sessions = sessions;
+    timer.log("replaced sessions")
   }
 
-// saveVods now has tab and window info
+  // saveVods now has tab and window info
 
-  const unstoredTabs = await findUnstoredTabs(Object.keys(savedVods))
-
+  // TODO: maybe make findUnstoredTabs use the same tab list from findTabs?
+  const unstoredTabs = await findUnstoredTabs(Object.keys(savedVods));
+  timer.log("unstoredTabs")
   root.render(
     <React.StrictMode>
-      <App vids={savedVods as VideoInfo} unstored={unstoredTabs}/>
+      <App vids={savedVods as VideoInfo} unstored={unstoredTabs} />
     </React.StrictMode>
   );
+  timer.log("rendered")
 })();
 
 // const testStuff: VideoInfo = {
@@ -62,7 +98,6 @@ const root = ReactDOM.createRoot(
 //     <App vids={testStuff}/>
 //   </React.StrictMode>
 // );
-
 
 //this isn't running btw
 // async () => {
@@ -92,7 +127,4 @@ const root = ReactDOM.createRoot(
 //   // show all tabs
 // };
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

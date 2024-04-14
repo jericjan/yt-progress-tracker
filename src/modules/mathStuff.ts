@@ -8,4 +8,19 @@ function formatTime(seconds: number) {
     .padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
 }
 
-export { formatTime };
+class Timer {
+  time : number
+  constructor() {
+    this.time = Date.now()
+  }
+
+  log(msg?: string) {
+    if (!msg){
+      msg = "Milliseconds since last"
+    }
+    console.log(`${msg} : ${Date.now() - this.time}`)
+    this.time = Date.now()
+  }
+}
+
+export { formatTime, Timer };

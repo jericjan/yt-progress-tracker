@@ -6,7 +6,6 @@ Project Description
 
 ### Todo
 
-
 - [ ] clear videos button  
 - [ ] if multiple tabs of same id, ask to delete if clicked on one  
 - [ ] use chrome.scripting instead of inject()  
@@ -19,7 +18,6 @@ Project Description
 ### In Progress
 
 - [ ] use sweetalert2 for popups  
-
 
 ### Done ✓
 

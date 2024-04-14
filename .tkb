@@ -49,12 +49,22 @@
     "14RBbNMkQVAWvMdF6Dik6": {
       "id": "14RBbNMkQVAWvMdF6Dik6",
       "description": "🐞 wrong tab gets set when clicking on item with multiple tabs\n",
-      "columnId": "column-doing"
+      "columnId": "column-done"
     },
     "iReS_vF4kKp3twjuSSHrT": {
       "id": "iReS_vF4kKp3twjuSSHrT",
       "description": "change mouse to link thing when hovering over items\n",
-      "columnId": "column-doing"
+      "columnId": "column-done"
+    },
+    "MJu2E_G80NSSHUpsMJlc-": {
+      "id": "MJu2E_G80NSSHUpsMJlc-",
+      "description": "reportwebvitals goes to console log\n",
+      "columnId": "column-done"
+    },
+    "Fi1U3y_EpVVXOj7NVDYGw": {
+      "id": "Fi1U3y_EpVVXOj7NVDYGw",
+      "description": "make findUnstoredTabs use the same tab list from findTabs",
+      "columnId": "column-todo"
     }
   },
   "columns": [
@@ -67,24 +77,25 @@
         "ElPn7ctIUxqFyCmyFkXsw",
         "RBcHnyn35MkfxqYEWWeh5",
         "rgzPIujxflAHCKqw3YUXV",
-        "vpE0SqKao_KFZ13uC-2Vu"
+        "vpE0SqKao_KFZ13uC-2Vu",
+        "Fi1U3y_EpVVXOj7NVDYGw"
       ]
     },
     {
       "id": "column-doing",
       "title": "Doing",
-      "tasksIds": [
-        "14RBbNMkQVAWvMdF6Dik6",
-        "iReS_vF4kKp3twjuSSHrT"
-      ]
+      "tasksIds": []
     },
     {
       "id": "column-done",
       "title": "Done",
       "tasksIds": [
+        "iReS_vF4kKp3twjuSSHrT",
+        "14RBbNMkQVAWvMdF6Dik6",
         "O5QaB6wHs421oAyoq1ssM",
         "-_NCv2RM0_XuGAnPeT6oy",
-        "162rLrk-4JSs8ECiB-oRQ"
+        "162rLrk-4JSs8ECiB-oRQ",
+        "MJu2E_G80NSSHUpsMJlc-"
       ]
     }
   ]
