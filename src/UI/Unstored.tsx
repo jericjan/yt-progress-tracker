@@ -2,6 +2,7 @@ import { UnstoredListProps, UnstoredRowProps } from "modules/interfaces";
 import { swalConfirm } from "modules/swal";
 import { useRef, useState } from "react";
 import { ReactComponent as TrashIcon } from "icons/trash.svg";
+import { TrashButton } from "./Buttons";
 function UnstoredList({ items, renderItem }: UnstoredListProps) {
   const [tabCount, setTabCount] = useState(items.length);
 
@@ -65,8 +66,9 @@ function UnstoredRow({
         </div>
         <div className="tabContents">
           <h3 className="title">{title}</h3>
-
-          <TrashIcon onClick={deleteVid} className="icon" stroke="#e72323"/>
+          <div className="arrange-horizontal">
+            <TrashButton onClick={deleteVid} />
+          </div>
         </div>
       </a>
     </li>

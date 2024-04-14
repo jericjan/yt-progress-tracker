@@ -1,9 +1,12 @@
-import { RowProps, ListProps, PartialVideoInfo } from "modules/interfaces";
+import {
+  ListProps,
+  PartialVideoInfo,
+  RowProps
+} from "modules/interfaces";
 import { formatTime } from "modules/mathStuff";
 import { swalConfirm } from "modules/swal";
 import { useRef, useState } from "react";
-import { ReactComponent as TrashIcon } from "icons/trash.svg";
-import { ReactComponent as ResetIcon } from "icons/reset.svg";
+import { ResetButton, TrashButton } from "./Buttons";
 
 function Row({
   title,
@@ -139,8 +142,10 @@ function Row({
             totalTime
           )} (${percState})`}</p>
           <p className="tab-count">Tab Count: {sessions.length}</p>
-          <ResetIcon onClick={resetTime} className="icon" stroke="#ffc93a" />
-          <TrashIcon onClick={deleteVid} className="icon" stroke="#e72323" />
+          <div className="arrange-horizontal">
+            <ResetButton onClick={resetTime} />
+            <TrashButton onClick={deleteVid} />
+          </div>
         </div>
       </a>
       <div className="progress-bar" style={{ width: percState }}></div>
@@ -209,4 +214,5 @@ function List({ items, renderItem }: ListProps) {
   );
 }
 
-export { Row, List };
+export { List, Row };
+

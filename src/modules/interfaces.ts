@@ -1,3 +1,4 @@
+
 interface TabContainerElem extends HTMLElement {
   sessionIDs: TabAndWindowID[];
 }
@@ -76,27 +77,28 @@ interface UnstoredRowProps extends UnstoredTab {
   changeTabCount: (amount: number) => void;
 }
 
-interface Stuff {
-  name: string
-}
+export type TrashProps = {
+  onClick: (e: React.MouseEvent) => Promise<void>;
+};
 
-interface MoreStuff extends Stuff {
-  age: number
-}
+export type ResetProps = {
+  onClick: (e: React.MouseEvent) => Promise<void>;
+};
 
-const guy: Stuff = {name: 'John'};
-(guy as MoreStuff).age = 20;
+export type ButtonWithTextProps = {
+  props: {
+    color: string;
+    type: "left" | "right";
+    offset: `${number}%`;
+    text: string;
+    Component: React.ElementType;
+    onClick: (e: React.MouseEvent) => Promise<void>;
+  };
+};
 
 export {
-  type TabContainerElem,
-  type VideoInfo,
-  type PartialVideoInfo,
-  type TabAndWindowID,
-  type RowProps,
   type AppProps,
-  type ListProps,
-  type renderItemFunc,
-  type UnstoredTab,
-  type UnstoredListProps,
-  type UnstoredRowProps,
+  type ListProps, type PartialVideoInfo, type RowProps, type TabAndWindowID, type TabContainerElem, type UnstoredListProps,
+  type UnstoredRowProps, type UnstoredTab, type VideoInfo, type renderItemFunc
 };
+

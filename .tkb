@@ -100,6 +100,11 @@
       "id": "VWBrRKsvoMgLFp-ZQfWa7",
       "description": "✅ add confirm to reset time",
       "columnId": "column-done"
+    },
+    "P2tudhh3f0oT1fDE4VMfI": {
+      "id": "P2tudhh3f0oT1fDE4VMfI",
+      "description": "added hover text to UI buttons",
+      "columnId": "column-done"
     }
   },
   "columns": [
@@ -129,6 +134,7 @@
       "id": "column-done",
       "title": "Done",
       "tasksIds": [
+        "P2tudhh3f0oT1fDE4VMfI",
         "VWBrRKsvoMgLFp-ZQfWa7",
         "fDdqV5MYpT1Deis857oPV",
         "3phx4HPKWr-Q82WYv6neS",

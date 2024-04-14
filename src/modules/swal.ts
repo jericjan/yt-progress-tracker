@@ -1,4 +1,9 @@
-import Swal, { SweetAlertIcon } from "sweetalert2";
+// import Swal, { SweetAlertIcon } from "sweetalert2";
+
+// import Swal, {SweetAlertIcon} from 'sweetalert2'
+import Swal, { SweetAlertIcon } from "sweetalert2/dist/sweetalert2.js";
+
+import "@sweetalert2/theme-dark/dark.min.css";
 
 const DEFAULTS = {
   heightAuto: false,

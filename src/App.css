@@ -51,7 +51,7 @@ ul {
 
 li {
   cursor: pointer;
-  position:relative
+  position: relative
 }
 
 .tabContainer {
@@ -69,13 +69,24 @@ li {
   width: 100%;
 }
 
-.icon {
+.btn-with-text {
   width: 30px;
   height: 30px;
 }
 
+.btn-with-text:hover+p,
+p:has(+ .btn-with-text:hover) {
+  visibility: visible !important;
+}
+
+.hide {
+  visibility: hidden;
+}
+
 .thumb {
   border-radius: 10px;
+  width: 120px;
+  height: 90px;
 }
 
 .iconDiv {
@@ -84,11 +95,11 @@ li {
   padding-right: 15px;
 }
 
-#visible-ul > li {
+#visible-ul>li {
   margin-bottom: 10px;
 }
 
-#unstored-ul > li {
+#unstored-ul>li {
   padding-bottom: 10px;
 }
 
@@ -102,4 +113,19 @@ li {
   background-color: hsl(220 13% 14% / 1);
   z-index: -24;
   border-radius: 0px 10px 10px 0px;
+}
+
+.arrange-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.weight-700 {
+  font-weight: 700;
+}
+
+.relative {
+  position: relative
 }
