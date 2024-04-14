@@ -51,6 +51,7 @@ ul {
 
 li {
   cursor: pointer;
+  position:relative
 }
 
 .tabContainer {
@@ -83,6 +84,22 @@ li {
   padding-right: 15px;
 }
 
+#visible-ul > li {
+  margin-bottom: 10px;
+}
+
 #unstored-ul > li {
   padding-bottom: 10px;
+}
+
+.progress-bar {
+  position: absolute;
+  width: 0%;
+  transition: width 0.3s;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: hsl(220 13% 14% / 1);
+  z-index: -24;
+  border-radius: 0px 10px 10px 0px;
 }

@@ -28,8 +28,8 @@
     },
     "fDdqV5MYpT1Deis857oPV": {
       "id": "fDdqV5MYpT1Deis857oPV",
-      "description": "add css progress bar to each item",
-      "columnId": "column-doing"
+      "description": "add css progress bar to each item\n✅",
+      "columnId": "column-done"
     },
     "rgzPIujxflAHCKqw3YUXV": {
       "id": "rgzPIujxflAHCKqw3YUXV",
@@ -88,8 +88,18 @@
     },
     "3phx4HPKWr-Q82WYv6neS": {
       "id": "3phx4HPKWr-Q82WYv6neS",
-      "description": "change ui buttons with icons\n",
-      "columnId": "column-doing"
+      "description": "change ui buttons with icons\n✅",
+      "columnId": "column-done"
+    },
+    "Aev69LS21AYJk3Q79rO6F": {
+      "id": "Aev69LS21AYJk3Q79rO6F",
+      "description": "add hover text to icons\n",
+      "columnId": "column-todo"
+    },
+    "VWBrRKsvoMgLFp-ZQfWa7": {
+      "id": "VWBrRKsvoMgLFp-ZQfWa7",
+      "description": "✅ add confirm to reset time",
+      "columnId": "column-done"
     }
   },
   "columns": [
@@ -100,6 +110,7 @@
         "KhTR9oiLujfzJuMN5Oo0O",
         "dB2zuKG59LzL3iZgcxtOJ",
         "_kmxKr9I0wXcR4jdblzhW",
+        "Aev69LS21AYJk3Q79rO6F",
         "3BJNDtmF4hZczYUJ7XtUu",
         "Fi1U3y_EpVVXOj7NVDYGw",
         "dHXraySNnwPkSRV35xtrZ",
@@ -112,15 +123,15 @@
     {
       "id": "column-doing",
       "title": "Doing",
-      "tasksIds": [
-        "3phx4HPKWr-Q82WYv6neS",
-        "fDdqV5MYpT1Deis857oPV"
-      ]
+      "tasksIds": []
     },
     {
       "id": "column-done",
       "title": "Done",
       "tasksIds": [
+        "VWBrRKsvoMgLFp-ZQfWa7",
+        "fDdqV5MYpT1Deis857oPV",
+        "3phx4HPKWr-Q82WYv6neS",
         "iReS_vF4kKp3twjuSSHrT",
         "14RBbNMkQVAWvMdF6Dik6",
         "O5QaB6wHs421oAyoq1ssM",

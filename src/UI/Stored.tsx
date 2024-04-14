@@ -17,6 +17,7 @@ function Row({
 }: RowProps) {
   const listRef = useRef<any>(null);
   const [currTimeState, setCurrTimeState] = useState(currTime);
+  const [percState, setPercState] = useState(perc);
   const click = async () => {
     // const matchedTabs = await findTab(vidId);
 
@@ -100,7 +101,18 @@ function Row({
 
   const resetTime = async (e: React.MouseEvent) => {
     e.stopPropagation();
+
+    const confirm = await swalConfirm(
+      "This will reset the saved time this for this video",
+      "Are you sure?"
+    );
+
+    if (!confirm.isConfirmed) {
+      return;
+    }
+
     setCurrTimeState(0);
+    setPercState("0%");
     const vidInfo: PartialVideoInfo = {
       [vidId]: {
         title: title,
@@ -125,14 +137,13 @@ function Row({
           <h3 className="title">{title}</h3>
           <p className="time">{`${formatTime(currTimeState)} / ${formatTime(
             totalTime
-          )} (${perc})`}</p>
+          )} (${percState})`}</p>
           <p className="tab-count">Tab Count: {sessions.length}</p>
-          <ResetIcon onClick={resetTime} className="icon" stroke="#ffc93a"/>
-          <TrashIcon onClick={deleteVid} className="icon" stroke="#e72323"/>
-          {/* <button onClick={resetTime}>Reset Time</button> */}
-          {/* <button onClick={deleteVid}>Delete</button> */}
+          <ResetIcon onClick={resetTime} className="icon" stroke="#ffc93a" />
+          <TrashIcon onClick={deleteVid} className="icon" stroke="#e72323" />
         </div>
       </a>
+      <div className="progress-bar" style={{ width: percState }}></div>
     </li>
   );
 }
