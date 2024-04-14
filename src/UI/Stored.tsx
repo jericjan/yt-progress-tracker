@@ -1,8 +1,4 @@
-import {
-  ListProps,
-  PartialVideoInfo,
-  RowProps
-} from "modules/interfaces";
+import { ListProps, PartialVideoInfo, RowProps } from "modules/interfaces";
 import { formatTime } from "modules/mathStuff";
 import { swalConfirm } from "modules/swal";
 import { useRef, useState } from "react";
@@ -193,7 +189,10 @@ function List({ items, renderItem }: ListProps) {
 
   return (
     <>
-      <p className="msg-text">Saved Videos ({videoCount})</p>
+      <div className="sub-header">
+        <p className="msg-text ">Saved Videos ({videoCount})</p>
+      </div>
+      <hr></hr>
       {vidIds.map((vidId) => {
         const contents = items[vidId];
         const { title, currTime, totalTime, sessions, isCurrent, epoch } =
@@ -215,4 +214,3 @@ function List({ items, renderItem }: ListProps) {
 }
 
 export { List, Row };
-

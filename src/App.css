@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 5vw;
+  height: 84px;
   pointer-events: none;
 }
 
@@ -16,10 +16,11 @@
 .App-header {
   background-color: #282c34;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  justify-content: center;
 }
 
 .App-link {
@@ -47,6 +48,7 @@ body {
 ul {
   list-style-type: none;
   padding-inline-start: 0;
+  margin: 0;
 }
 
 li {
@@ -72,6 +74,12 @@ li {
 .btn-with-text {
   width: 30px;
   height: 30px;
+  transition: scale 0.3s;
+  scale: 100%;
+}
+
+.btn-with-text:hover {
+  scale: 125%
 }
 
 .btn-with-text:hover+p,
@@ -87,20 +95,18 @@ p:has(+ .btn-with-text:hover) {
   border-radius: 10px;
   width: 120px;
   height: 90px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 .iconDiv {
   display: flex;
   align-items: center;
-  padding-right: 15px;
 }
 
-#visible-ul>li {
-  margin-bottom: 10px;
-}
+.thumb {
 
-#unstored-ul>li {
-  padding-bottom: 10px;
 }
 
 .progress-bar {
@@ -128,4 +134,29 @@ p:has(+ .btn-with-text:hover) {
 
 .relative {
   position: relative
+}
+
+h1 {
+  color: white;
+  font-size: 35px;
+  font-weight: 600;
+}
+
+hr {
+  box-shadow: hsl(222 13% 16% / 1) 0px 0px 5px;
+  border-color: hsl(222 13% 13% / 1);
+  color: black;
+  background-color: black;
+  border-width: 2px;
+  border-style: solid;
+  margin: 0;
+}
+
+.sub-header {
+
+  padding-bottom: 10px;
+  padding-top: 10px;
+  background-color: hsl(220 13% 22% / 1);
+
+
 }

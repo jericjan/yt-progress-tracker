@@ -91,11 +91,6 @@
       "description": "change ui buttons with icons\n✅",
       "columnId": "column-done"
     },
-    "Aev69LS21AYJk3Q79rO6F": {
-      "id": "Aev69LS21AYJk3Q79rO6F",
-      "description": "add hover text to icons\n",
-      "columnId": "column-todo"
-    },
     "VWBrRKsvoMgLFp-ZQfWa7": {
       "id": "VWBrRKsvoMgLFp-ZQfWa7",
       "description": "✅ add confirm to reset time",
@@ -105,6 +100,16 @@
       "id": "P2tudhh3f0oT1fDE4VMfI",
       "description": "added hover text to UI buttons",
       "columnId": "column-done"
+    },
+    "Gw6LngdCGiSdbZfHRVAjf": {
+      "id": "Gw6LngdCGiSdbZfHRVAjf",
+      "description": "popup title header\n",
+      "columnId": "column-doing"
+    },
+    "YZUg5X4gd8xC8HUVc6hTx": {
+      "id": "YZUg5X4gd8xC8HUVc6hTx",
+      "description": "make ui icons glow\n",
+      "columnId": "column-doing"
     }
   },
   "columns": [
@@ -115,7 +120,6 @@
         "KhTR9oiLujfzJuMN5Oo0O",
         "dB2zuKG59LzL3iZgcxtOJ",
         "_kmxKr9I0wXcR4jdblzhW",
-        "Aev69LS21AYJk3Q79rO6F",
         "3BJNDtmF4hZczYUJ7XtUu",
         "Fi1U3y_EpVVXOj7NVDYGw",
         "dHXraySNnwPkSRV35xtrZ",
@@ -128,7 +132,10 @@
     {
       "id": "column-doing",
       "title": "Doing",
-      "tasksIds": []
+      "tasksIds": [
+        "Gw6LngdCGiSdbZfHRVAjf",
+        "YZUg5X4gd8xC8HUVc6hTx"
+      ]
     },
     {
       "id": "column-done",

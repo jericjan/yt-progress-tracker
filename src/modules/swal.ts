@@ -1,7 +1,7 @@
 // import Swal, { SweetAlertIcon } from "sweetalert2";
 
 // import Swal, {SweetAlertIcon} from 'sweetalert2'
-import Swal, { SweetAlertIcon } from "sweetalert2/dist/sweetalert2.js";
+import Swal, { SweetAlertIcon, SweetAlertResult } from "sweetalert2/dist/sweetalert2.js";
 
 import "@sweetalert2/theme-dark/dark.min.css";
 
@@ -15,7 +15,7 @@ export function swalConfirm(
   title: string = "Confirm?",
   confirmText: string = "Yes",
   cancelText: string = "Cancel"
-) {
+): Promise<SweetAlertResult<any>> {
   return Swal.fire({
     title: title,
     text: desc,

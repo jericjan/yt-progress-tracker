@@ -35,7 +35,7 @@ export function ResetButton({ onClick }: ResetProps) {
 export function ButtonWithText({ props }: ButtonWithTextProps) {
   const { color, type, offset, text, Component, onClick } = props;
 
-  const style = {
+  const textStyle = {
     color: color,
     position: "absolute" as "absolute",
     [type]: offset,
@@ -49,7 +49,7 @@ export function ButtonWithText({ props }: ButtonWithTextProps) {
   return (
     <>
       <div className="relative">
-        <p style={style} className="hide weight-700">
+        <p style={textStyle} className="hide weight-700">
           {text}
         </p>
         <Component onClick={onClick} className="btn-with-text" stroke={color} />

@@ -11,14 +11,16 @@ function App({ vids, unstored }: AppProps) {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>YouTube Progress Tracker</h1>
         <img src={logo} className="App-logo" alt="logo" />
       </header>
-
+      <hr></hr>
       <ul id="visible-ul">
-        {/* <List title="test" currTime="200" /> */}
+        
         <List
           items={vids}
           renderItem={(props) => (
+            <>
             <Row
               vidId={props.vidId}
               title={props.title}
@@ -30,6 +32,8 @@ function App({ vids, unstored }: AppProps) {
               isCurrent={props.isCurrent}
               changeVideoCount={props.changeVideoCount}
             />
+            <hr></hr>
+            </>
           )}
         />
       </ul>
@@ -37,6 +41,7 @@ function App({ vids, unstored }: AppProps) {
         <UnstoredList
           items={unstored}
           renderItem={(props) => (
+            <>
             <UnstoredRow
               vidId={props.vidId}
               title={props.title}
@@ -44,6 +49,8 @@ function App({ vids, unstored }: AppProps) {
               windowId={props.windowId}
               changeTabCount={props.changeTabCount}
             />
+            <hr></hr>
+            </>
           )}
         />
       </ul>

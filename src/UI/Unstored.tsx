@@ -15,7 +15,10 @@ function UnstoredList({ items, renderItem }: UnstoredListProps) {
   }
   return (
     <>
-      <p className="msg-text">Unstored Opened Tabs ({tabCount})</p>
+      <div className="sub-header">
+        <p className="msg-text">Unstored Opened Tabs ({tabCount})</p>
+      </div>
+      <hr></hr>
       {items.map((unstoredTab) => {
         const rowProps = unstoredTab as UnstoredRowProps;
         rowProps.changeTabCount = changeTabCount;
