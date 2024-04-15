@@ -12,7 +12,7 @@ In the project directory, you can run:
 
 ### `pnpm start`
 
-Make sure to set `TEST_MODE` to `true` before running. It will give the app pre-made stuff that is supposed to be read from `chrome.storage`. There is limited functionality here unfortunately. Best used for when making changes to the UI.
+It will give the app pre-made stuff that is supposed to be read from `chrome.storage`. There is limited functionality here unfortunately. Best used for when making changes to the UI.
 
 
 ### `pnpm run build`
