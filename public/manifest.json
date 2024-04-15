@@ -1,5 +1,5 @@
 {
-  "name": "Youtube Video Progress Tracker",
+  "name": "YouTube Progress Tracker",
   "version": "1.0",
   "manifest_version": 3,
   "minimum_chrome_version": "120",
@@ -8,12 +8,13 @@
   "host_permissions": ["https://www.youtube.com/*"],
   "action": {
     "default_popup": "index.html",
-    "default_title": "Youtube Video Progress Tracker"
+    "default_title": "YouTube Progress Tracker"
   },
   "icons": {
-    "16": "logo192.png",
-    "48": "logo192.png",
-    "128": "logo192.png"
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
   },
   "content_scripts": [
     {

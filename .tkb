@@ -84,7 +84,7 @@
     "_kmxKr9I0wXcR4jdblzhW": {
       "id": "_kmxKr9I0wXcR4jdblzhW",
       "description": "change the icons\n",
-      "columnId": "column-todo"
+      "columnId": "column-done"
     },
     "3phx4HPKWr-Q82WYv6neS": {
       "id": "3phx4HPKWr-Q82WYv6neS",
@@ -114,11 +114,21 @@
     "UIr0AFlSAgQSx2iDRRvFx": {
       "id": "UIr0AFlSAgQSx2iDRRvFx",
       "description": "anime.js for rotating logo?\n",
-      "columnId": "column-todo"
+      "columnId": "column-done"
     },
     "Qu4HWVH5qcL9EFRLYU6Sh": {
       "id": "Qu4HWVH5qcL9EFRLYU6Sh",
       "description": "classes.ts might not be used?\n",
+      "columnId": "column-todo"
+    },
+    "yLY5xYei2O0YgNKrF8CAz": {
+      "id": "yLY5xYei2O0YgNKrF8CAz",
+      "description": "credit assets\n",
+      "columnId": "column-done"
+    },
+    "mOAoYsqAcGTt6jBSQYb9T": {
+      "id": "mOAoYsqAcGTt6jBSQYb9T",
+      "description": "use anime.js on options page",
       "columnId": "column-todo"
     }
   },
@@ -129,8 +139,7 @@
       "tasksIds": [
         "KhTR9oiLujfzJuMN5Oo0O",
         "dB2zuKG59LzL3iZgcxtOJ",
-        "_kmxKr9I0wXcR4jdblzhW",
-        "UIr0AFlSAgQSx2iDRRvFx",
+        "mOAoYsqAcGTt6jBSQYb9T",
         "3BJNDtmF4hZczYUJ7XtUu",
         "Fi1U3y_EpVVXOj7NVDYGw",
         "dHXraySNnwPkSRV35xtrZ",
@@ -150,6 +159,9 @@
       "id": "column-done",
       "title": "Done",
       "tasksIds": [
+        "yLY5xYei2O0YgNKrF8CAz",
+        "_kmxKr9I0wXcR4jdblzhW",
+        "UIr0AFlSAgQSx2iDRRvFx",
         "YZUg5X4gd8xC8HUVc6hTx",
         "Gw6LngdCGiSdbZfHRVAjf",
         "P2tudhh3f0oT1fDE4VMfI",

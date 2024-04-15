@@ -26,7 +26,6 @@ module.exports = {
           ].filter(Boolean),
           content: "./src/youtube.ts",
           stuff: "./src/injected.ts",
-          sw: "./src/sw.ts",
           timeSetter: "./src/timeSetter.ts",
           options: "./src/options.tsx",
         },

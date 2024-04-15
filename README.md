@@ -20,3 +20,9 @@ It will give the app pre-made stuff that is supposed to be read from `chrome.sto
 Builds the app for production to the `build` folder.
 
 
+# Credits
+This extension uses the following assets:
+- Hexagon icon - https://fffuel.co/nnneon/
+- svgrepo.com:
+  - [Trash icon](https://www.svgrepo.com/svg/533007/trash) - Dazzle UI (CC Attribution License)
+  - [Time reset icon](https://www.svgrepo.com/svg/389464/timer-reset) (MIT License)
