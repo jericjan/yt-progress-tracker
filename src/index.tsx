@@ -22,7 +22,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const TEST_MODE = true;
+const TEST_MODE = false;
 
 if (TEST_MODE) {
   root.render(
