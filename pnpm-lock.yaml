@@ -50,9 +50,6 @@ dependencies:
   react:
     specifier: ^18.2.0
     version: 18.2.0
-  react-anime:
-    specifier: ^4.1.1
-    version: 4.1.1(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -8831,17 +8828,6 @@ packages:
       http-errors: 2.0.0
       iconv-lite: 0.4.24
       unpipe: 1.0.0
-    dev: false
-
-  /react-anime@4.1.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-w6oe/6PZ3Swm2Z0EKvawJzvK8iN2gC0NbevjSIEguxY8KuDg/HaDROksLHVrPO5tFpRSEQg2jzy48gcfquDREQ==}
-    peerDependencies:
-      react: ^17.x
-      react-dom: ^17.x
-    dependencies:
-      animejs: 3.2.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-app-polyfill@3.0.0:

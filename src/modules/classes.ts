@@ -13,7 +13,6 @@ class YouTubeTab {
     const firstChild = template.childNodes[0].cloneNode();
     this.element = firstChild.cloneNode(true) as HTMLLIElement;
     this.sessionIDs = sessionIDs;
-    // this.isCurrentTab = currentTab.id == tabId;
     this.isCurrentTab = sessionIDs.some((x) => {
       const tabId = x["tabId"];
       return tabId == currentTab.id;
@@ -32,11 +31,7 @@ class YouTubeTab {
 
     titleElem.textContent = title;
     timeElem.textContent = time.toString();
-    // tabContainer.setAttribute("id", `tab-${this.tab.id}`);
-
     tabContainer.sessionIDs = this.sessionIDs;
-
-    //   this.element.querySelector(".iconDiv > img").src = faviUrl;
   }
 
   onclick(func: () => Promise<void>) {

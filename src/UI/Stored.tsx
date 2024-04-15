@@ -18,8 +18,6 @@ function Row({
   const [currTimeState, setCurrTimeState] = useState(currTime);
   const [percState, setPercState] = useState(perc);
   const click = async () => {
-    // const matchedTabs = await findTab(vidId);
-
     const timedUrl = `https://youtu.be/${vidId}?t=${Math.floor(currTime)}`;
 
     if (sessions.length == 0) {
@@ -50,7 +48,6 @@ function Row({
       }
 
       if (isCurrent) {
-        // document.dispatchEvent(new CustomEvent("ytSetVideoTime", { detail: Math.floor(currTime) }));
         await chrome.tabs.sendMessage(
           firstTab.tabId as number,
           Math.floor(currTime)

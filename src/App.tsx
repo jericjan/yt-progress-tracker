@@ -1,16 +1,14 @@
-// import logo from "./logo.svg";
 import { ReactComponent as NewLogo } from "./neon.svg";
 import "./App.css";
 import { AppProps } from "./modules/interfaces";
 import { List, Row } from "./UI/Stored";
 import { UnstoredList, UnstoredRow } from "./UI/Unstored";
-import Anime, { anime } from "react-anime";
+import anime from "animejs";
 import { useEffect } from "react";
 
 function App({ vids, unstored }: AppProps) {
 
   useEffect(() => {
-    console.log("effecting")
     function randomValues() {
       const distance = 25
       anime({
@@ -42,7 +40,6 @@ function App({ vids, unstored }: AppProps) {
     
 
     return function() {
-      console.log("removing")
       anime.remove("#logo-div");
       anime.remove('.App-header > h1');
     }
@@ -53,7 +50,6 @@ function App({ vids, unstored }: AppProps) {
     <div className="App">
       <header className="App-header">
         <h1>YouTube Progress Tracker</h1>
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <div id="logo-div"><NewLogo className="App-logo" /></div>
       </header>
       <hr></hr>
