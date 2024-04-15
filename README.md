@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# YouTube Progress Tracker
+
+### Track the progress on your videos because YouTube does a bad job at it!
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). I also used `pnpm` so it's best you use that as well if you want to build or fork this yourself.
 

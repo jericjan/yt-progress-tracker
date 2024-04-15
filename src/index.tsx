@@ -22,9 +22,12 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const TEST_MODE = false;
+const node_env = process.env.NODE_ENV
 
-if (TEST_MODE) {
+console.log("ENV: ", node_env)
+
+
+if (node_env == "development") {
   root.render(
     <React.StrictMode>
       <App vids={testStored} unstored={testUnstored} />
