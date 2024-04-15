@@ -15,6 +15,7 @@ function Row({
   changeVideoCount,
 }: RowProps) {
   const listRef = useRef<any>(null);
+  const hrRef = useRef<any>(null);
   const [currTimeState, setCurrTimeState] = useState(currTime);
   const [percState, setPercState] = useState(perc);
   const click = async () => {
@@ -73,9 +74,8 @@ function Row({
       changeVideoCount(-1);
 
       // remove elem
-      if (listRef.current) {
-        listRef.current.remove();
-      }
+      listRef.current.remove();
+      hrRef.current.remove();
 
       // remove from storage
       await chrome.storage.local.remove(vidId);
@@ -121,28 +121,31 @@ function Row({
   };
 
   return (
-    <li ref={listRef}>
-      <a className="tabContainer" onClick={click}>
-        <div className="iconDiv">
-          <img
-            className="thumb"
-            src={`https://i.ytimg.com/vi/${vidId}/default.jpg`}
-          />
-        </div>
-        <div className="tabContents">
-          <h3 className="title">{title}</h3>
-          <p className="time">{`${formatTime(currTimeState)} / ${formatTime(
-            totalTime
-          )} (${percState})`}</p>
-          <p className="tab-count">Tab Count: {sessions.length}</p>
-          <div className="arrange-horizontal">
-            <ResetButton onClick={resetTime} />
-            <TrashButton onClick={deleteVid} />
+    <>
+      <li ref={listRef}>
+        <a className="tabContainer" onClick={click}>
+          <div className="iconDiv">
+            <img
+              className="thumb"
+              src={`https://i.ytimg.com/vi/${vidId}/default.jpg`}
+            />
           </div>
-        </div>
-      </a>
-      <div className="progress-bar" style={{ width: percState }}></div>
-    </li>
+          <div className="tabContents">
+            <h3 className="title">{title}</h3>
+            <p className="time">{`${formatTime(currTimeState)} / ${formatTime(
+              totalTime
+            )} (${percState})`}</p>
+            <p className="tab-count">Tab Count: {sessions.length}</p>
+            <div className="arrange-horizontal">
+              <ResetButton onClick={resetTime} />
+              <TrashButton onClick={deleteVid} />
+            </div>
+          </div>
+        </a>
+        <div className="progress-bar" style={{ width: percState }}></div>
+      </li>
+      <hr ref={hrRef}></hr>
+    </>
   );
 }
 

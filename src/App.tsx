@@ -69,7 +69,6 @@ function App({ vids, unstored }: AppProps) {
                 isCurrent={props.isCurrent}
                 changeVideoCount={props.changeVideoCount}
               />
-              <hr></hr>
             </>
           )}
         />
@@ -86,7 +85,6 @@ function App({ vids, unstored }: AppProps) {
                 windowId={props.windowId}
                 changeTabCount={props.changeTabCount}
               />
-              <hr></hr>
             </>
           )}
         />

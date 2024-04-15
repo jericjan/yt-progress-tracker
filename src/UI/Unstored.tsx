@@ -37,6 +37,7 @@ function UnstoredRow({
   changeTabCount,
 }: UnstoredRowProps) {
   const listRef = useRef<any>(null);
+  const hrRef = useRef<any>(null);
 
   const click = async () => {
     await chrome.tabs.update(tabId as number, {
@@ -51,14 +52,14 @@ function UnstoredRow({
     e.stopPropagation();
     if ((await swalConfirm("Do you want to close this tab?")).isConfirmed) {
       chrome.tabs.remove(tabId as number);
-      if (listRef.current) {
-        listRef.current.remove();
-      }
+      listRef.current.remove();
+      hrRef.current.remove();
       changeTabCount(-1);
     }
   };
 
   return (
+    <>
     <li ref={listRef}>
       <a className="tabContainer" onClick={click}>
         <div className="iconDiv">
@@ -75,6 +76,8 @@ function UnstoredRow({
         </div>
       </a>
     </li>
+    <hr ref={hrRef}></hr>
+    </>
   );
 }
 

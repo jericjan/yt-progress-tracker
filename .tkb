@@ -130,6 +130,16 @@
       "id": "mOAoYsqAcGTt6jBSQYb9T",
       "description": "use anime.js on options page",
       "columnId": "column-todo"
+    },
+    "aIT3TddcYYeZ6ujSap_FK": {
+      "id": "aIT3TddcYYeZ6ujSap_FK",
+      "description": "remove <hr> when deleting items\n",
+      "columnId": "column-done"
+    },
+    "cBxc-dM_dIIuhZo9KOUTz": {
+      "id": "cBxc-dM_dIIuhZo9KOUTz",
+      "description": "# Bug Fixes",
+      "columnId": "column-todo"
     }
   },
   "columns": [
@@ -137,6 +147,7 @@
       "id": "column-todo",
       "title": "To do",
       "tasksIds": [
+        "cBxc-dM_dIIuhZo9KOUTz",
         "KhTR9oiLujfzJuMN5Oo0O",
         "dB2zuKG59LzL3iZgcxtOJ",
         "mOAoYsqAcGTt6jBSQYb9T",
@@ -159,6 +170,7 @@
       "id": "column-done",
       "title": "Done",
       "tasksIds": [
+        "aIT3TddcYYeZ6ujSap_FK",
         "yLY5xYei2O0YgNKrF8CAz",
         "_kmxKr9I0wXcR4jdblzhW",
         "UIr0AFlSAgQSx2iDRRvFx",
