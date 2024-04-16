@@ -154,7 +154,12 @@
     "_yrB7YWAG-92yru8R1eII": {
       "id": "_yrB7YWAG-92yru8R1eII",
       "description": "still tell user thtat script ain't working when navigating to other page (this doesn't count as a refresh)",
-      "columnId": "column-todo"
+      "columnId": "column-done"
+    },
+    "EkQ1q1TX7R9uOA4jLX2rr": {
+      "id": "EkQ1q1TX7R9uOA4jLX2rr",
+      "description": "possible bugs when entering tabs that existed before extension was instaled? 👎 doesn't seem to exist",
+      "columnId": "column-done"
     }
   },
   "columns": [
@@ -163,7 +168,6 @@
       "title": "To do",
       "tasksIds": [
         "cBxc-dM_dIIuhZo9KOUTz",
-        "_yrB7YWAG-92yru8R1eII",
         "KhTR9oiLujfzJuMN5Oo0O",
         "dB2zuKG59LzL3iZgcxtOJ",
         "mOAoYsqAcGTt6jBSQYb9T",
@@ -186,6 +190,8 @@
       "id": "column-done",
       "title": "Done",
       "tasksIds": [
+        "EkQ1q1TX7R9uOA4jLX2rr",
+        "_yrB7YWAG-92yru8R1eII",
         "OLS8AztJ5DEWUHsQ2ygVp",
         "8QVErVgimDWnEhb_uRACo",
         "aIT3TddcYYeZ6ujSap_FK",

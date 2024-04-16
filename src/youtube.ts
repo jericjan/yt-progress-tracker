@@ -42,9 +42,18 @@ async function ytSendProgListener(e: any) {
   } catch (error) {
     if (error instanceof Error) {
       if ((error.message = "Extension context invalidated.")) {
-        alert(
-          "YouTube Progress Tracker isn't working. Please refresh the page to continue saving progress."
-        );
+        const notice = document.createElement("p");
+        notice.innerHTML =
+          "Please refresh the page. YouTube Progress Tracker is not working rn.";
+        notice.style.cssText =
+          "color: white;" +
+          "position: fixed;" +
+          "left: 0px;" +
+          "z-index: 99999;" +
+          "background-color:#ff000030;" +
+          "padding: 10px;";
+        document.body.appendChild(notice);
+
         document.removeEventListener("ytSendProg", ytSendProgListener);
         document.body.setAttribute("yt-send-prog-listener-active", "false");
       } else {
