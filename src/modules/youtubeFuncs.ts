@@ -38,19 +38,25 @@ async function monitorProgress() {
     "getVideoData"
   );
   const title = videoData["title"];
-  
-  const vidInfo: PartialVideoInfo = {
-    [vidId]: { title: title, currTime: currentTime, totalTime: totalTime, epoch: Date.now() },
-  };
-  console.log("Saving...", vidInfo);
 
-  // this is being run in an injected script, so it can't run `chrome.tabs`
-  // it will need to send an event to the content script (youtube.ts)
-  document.dispatchEvent(new CustomEvent("ytSendProg", { detail: vidInfo }));
-  console.log("Saved?????");
-  setTimeout(() => {
-    monitorProgress();
-  }, INTERVAL);
+  const vidInfo: PartialVideoInfo = {
+    [vidId]: {
+      title: title,
+      currTime: currentTime,
+      totalTime: totalTime,
+      epoch: Date.now(),
+    },
+  };
+
+  if (document.body.getAttribute("yt-send-prog-listener-active") != "false") {
+    // this is being run in an injected script, so it can't run `chrome.tabs`
+    // it will need to send an event to the content script (youtube.ts)
+    document.dispatchEvent(new CustomEvent("ytSendProg", { detail: vidInfo }));
+    console.log("Saved: ", vidInfo);
+    setTimeout(() => {
+      monitorProgress();
+    }, INTERVAL);
+  }
 }
 
 export { monitorProgress, getVideoId, VIDEO_PLAYER_SELECTOR };
