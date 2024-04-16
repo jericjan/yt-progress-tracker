@@ -25,7 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set PORT=3001 && react-scripts start",
+    "start": "set PORT=3001 && craco start",
     "build": "set INLINE_RUNTIME_CHUNK=false && craco build && curl http://localhost:5000/tts?msg=build%20done"
   },
   "eslintConfig": {
