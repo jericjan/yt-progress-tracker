@@ -19,6 +19,10 @@ async function ytSendProgListener(e: any) {
 
   const vidId = Object.keys(stuff)[0];
 
+  if (!vidId) {
+    return;
+  }
+
   try {
     const storedData: PartialVideoInfo = await chrome.storage.local.get(vidId);
 
@@ -42,7 +46,7 @@ async function ytSendProgListener(e: any) {
           "YouTube Progress Tracker isn't working. Please refresh the page to continue saving progress."
         );
         document.removeEventListener("ytSendProg", ytSendProgListener);
-        document.body.setAttribute("yt-send-prog-listener-active", "false")
+        document.body.setAttribute("yt-send-prog-listener-active", "false");
       } else {
         throw error;
       }
@@ -51,7 +55,7 @@ async function ytSendProgListener(e: any) {
 }
 
 function main() {
-  document.body.setAttribute("yt-send-prog-listener-active", "true")
+  document.body.setAttribute("yt-send-prog-listener-active", "true");
   document.addEventListener("ytSendProg", ytSendProgListener);
 
   // the popup UI will send a message, and it will set the `t` parameter of the current tab,
