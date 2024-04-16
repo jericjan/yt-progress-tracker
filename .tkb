@@ -140,6 +140,11 @@
       "id": "cBxc-dM_dIIuhZo9KOUTz",
       "description": "# Bug Fixes",
       "columnId": "column-todo"
+    },
+    "8QVErVgimDWnEhb_uRACo": {
+      "id": "8QVErVgimDWnEhb_uRACo",
+      "description": "notify user if extension context invalid / not saving to storage",
+      "columnId": "column-todo"
     }
   },
   "columns": [
@@ -148,6 +153,7 @@
       "title": "To do",
       "tasksIds": [
         "cBxc-dM_dIIuhZo9KOUTz",
+        "8QVErVgimDWnEhb_uRACo",
         "KhTR9oiLujfzJuMN5Oo0O",
         "dB2zuKG59LzL3iZgcxtOJ",
         "mOAoYsqAcGTt6jBSQYb9T",

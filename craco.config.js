@@ -27,7 +27,7 @@ module.exports = {
           content: "./src/youtube.ts",
           stuff: "./src/injected.ts",
           timeSetter: "./src/timeSetter.ts",
-          options: "./src/options.tsx",
+          options: "./src/options.tsx"
         },
         output: {
           ...webpackConfig.output,

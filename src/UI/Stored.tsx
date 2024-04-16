@@ -1,6 +1,6 @@
 import { ListProps, PartialVideoInfo, RowProps } from "modules/interfaces";
 import { formatTime } from "modules/mathStuff";
-import { swalConfirm } from "modules/swal";
+import { swalBasic, swalConfirm } from "modules/swal";
 import { useRef, useState } from "react";
 import { ResetButton, TrashButton } from "./Buttons";
 
@@ -49,10 +49,14 @@ function Row({
       }
 
       if (isCurrent) {
-        await chrome.tabs.sendMessage(
-          firstTab.tabId as number,
-          Math.floor(currTime)
-        );
+        try {
+          await chrome.tabs.sendMessage(
+            firstTab.tabId as number,
+            Math.floor(currTime)
+          );
+        } catch (error) {
+          swalBasic("Can't set time","You might have refreshed the extension. Please refresh the page.", "error")
+        }
       } else {
         await chrome.tabs.update(firstTab.tabId as number, {
           active: true,
