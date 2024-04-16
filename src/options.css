@@ -42,6 +42,10 @@ body {
   background-color: #282c34;
 }
 
+body, html {
+  overflow: hidden;
+}
+
 
 .msg-text {
   font-size: calc(10px + 2vmin);

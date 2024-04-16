@@ -129,7 +129,7 @@
     "mOAoYsqAcGTt6jBSQYb9T": {
       "id": "mOAoYsqAcGTt6jBSQYb9T",
       "description": "use anime.js on options page",
-      "columnId": "column-doing"
+      "columnId": "column-done"
     },
     "aIT3TddcYYeZ6ujSap_FK": {
       "id": "aIT3TddcYYeZ6ujSap_FK",
@@ -183,14 +183,13 @@
     {
       "id": "column-doing",
       "title": "Doing",
-      "tasksIds": [
-        "mOAoYsqAcGTt6jBSQYb9T"
-      ]
+      "tasksIds": []
     },
     {
       "id": "column-done",
       "title": "Done",
       "tasksIds": [
+        "mOAoYsqAcGTt6jBSQYb9T",
         "EkQ1q1TX7R9uOA4jLX2rr",
         "_yrB7YWAG-92yru8R1eII",
         "OLS8AztJ5DEWUHsQ2ygVp",
