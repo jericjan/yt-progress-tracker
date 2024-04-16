@@ -24,39 +24,45 @@ function getVideoId(url?: string): string {
 }
 
 async function monitorProgress() {
+  if (document.body.getAttribute("yt-send-prog-listener-active") == "false") {
+    // stop. user will be told to refresh the page,
+    // so that attribute will be true and injected.ts is re-injected
+    return;
+  }
+
   const vidId = getVideoId();
-  const currentTime: number = await waitforProperty(
-    VIDEO_PLAYER_SELECTOR,
-    "getCurrentTime"
-  );
-  const totalTime: number = await waitforProperty(
-    VIDEO_PLAYER_SELECTOR,
-    "getDuration"
-  );
-  const videoData: { title: string } = await waitforProperty(
-    VIDEO_PLAYER_SELECTOR,
-    "getVideoData"
-  );
-  const title = videoData["title"];
+  if (vidId) {
+    const currentTime: number = await waitforProperty(
+      VIDEO_PLAYER_SELECTOR,
+      "getCurrentTime"
+    );
+    const totalTime: number = await waitforProperty(
+      VIDEO_PLAYER_SELECTOR,
+      "getDuration"
+    );
+    const videoData: { title: string } = await waitforProperty(
+      VIDEO_PLAYER_SELECTOR,
+      "getVideoData"
+    );
+    const title = videoData["title"];
 
-  const vidInfo: PartialVideoInfo = {
-    [vidId]: {
-      title: title,
-      currTime: currentTime,
-      totalTime: totalTime,
-      epoch: Date.now(),
-    },
-  };
+    const vidInfo: PartialVideoInfo = {
+      [vidId]: {
+        title: title,
+        currTime: currentTime,
+        totalTime: totalTime,
+        epoch: Date.now(),
+      },
+    };
 
-  if (document.body.getAttribute("yt-send-prog-listener-active") != "false") {
     // this is being run in an injected script, so it can't run `chrome.tabs`
     // it will need to send an event to the content script (youtube.ts)
     document.dispatchEvent(new CustomEvent("ytSendProg", { detail: vidInfo }));
     console.log("Saved: ", vidInfo);
-    setTimeout(() => {
-      monitorProgress();
-    }, INTERVAL);
   }
+  setTimeout(() => {
+    monitorProgress();
+  }, INTERVAL);
 }
 
 export { monitorProgress, getVideoId, VIDEO_PLAYER_SELECTOR };

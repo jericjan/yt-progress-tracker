@@ -22,11 +22,6 @@ function main() {
     return; // we are inside the extension, we want to be injected into a page, not this
   }
 
-  var vidId = getVideoId();
-  console.log(`Video id is ${vidId}`);
-  if (vidId == "") {
-    return;
-  }
   waitforElem(VIDEO_PLAYER_SELECTOR).then(async (e) => {
     monitorProgress().catch((error) => {
       console.error(error);
