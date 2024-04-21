@@ -23,6 +23,10 @@ async function ytSendProgListener(e: any) {
     return;
   }
 
+  if (!stuff.title) {
+    return; // visiting the link of a dead video will have a blank title. return to ignore
+  }
+
   try {
     const storedData: PartialVideoInfo = await chrome.storage.local.get(vidId);
 

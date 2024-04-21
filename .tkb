@@ -44,7 +44,7 @@
     "dB2zuKG59LzL3iZgcxtOJ": {
       "id": "dB2zuKG59LzL3iZgcxtOJ",
       "description": "keyboard shortcuts",
-      "columnId": "column-todo"
+      "columnId": "column-doing"
     },
     "14RBbNMkQVAWvMdF6Dik6": {
       "id": "14RBbNMkQVAWvMdF6Dik6",
@@ -169,7 +169,6 @@
       "tasksIds": [
         "cBxc-dM_dIIuhZo9KOUTz",
         "KhTR9oiLujfzJuMN5Oo0O",
-        "dB2zuKG59LzL3iZgcxtOJ",
         "3BJNDtmF4hZczYUJ7XtUu",
         "Fi1U3y_EpVVXOj7NVDYGw",
         "dHXraySNnwPkSRV35xtrZ",
@@ -183,7 +182,9 @@
     {
       "id": "column-doing",
       "title": "Doing",
-      "tasksIds": []
+      "tasksIds": [
+        "dB2zuKG59LzL3iZgcxtOJ"
+      ]
     },
     {
       "id": "column-done",
