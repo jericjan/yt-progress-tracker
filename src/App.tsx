@@ -4,61 +4,90 @@ import { AppProps } from "./modules/interfaces";
 import { List, Row } from "./UI/Stored";
 import { UnstoredList, UnstoredRow } from "./UI/Unstored";
 import anime from "animejs";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { swalConfirm } from "modules/swal";
 
 function App({ vids, unstored }: AppProps) {
+  const [vidState, setVidState] = useState(vids);
 
   useEffect(() => {
     function randomValues() {
-      const distance = 25
+      const distance = 25;
       anime({
-        targets: '#logo-div',
-        translateX: function() {
-          return anime.random(0, distance) - (distance/2);
+        targets: "#logo-div",
+        translateX: function () {
+          return anime.random(0, distance) - distance / 2;
         },
-        translateY: function() {
-          return anime.random(0, distance) - (distance/2);
-        },        
-        rotate: function() {
+        translateY: function () {
+          return anime.random(0, distance) - distance / 2;
+        },
+        rotate: function () {
           return anime.random(0, 180);
-        },            
-        easing: 'easeInOutQuad',
+        },
+        easing: "easeInOutQuad",
         duration: 1000,
-        complete: randomValues
+        complete: randomValues,
       });
     }
     randomValues();
 
     anime({
-      targets: '.App-header > h1',
-      translateY: [2.5,-2.5],
+      targets: ".App-header > h1",
+      translateY: [2.5, -2.5],
       duration: 1000,
-      direction: 'alternate',
+      direction: "alternate",
       loop: true,
-      easing: 'easeInOutSine'
-    })
-    
+      easing: "easeInOutSine",
+    });
 
-    return function() {
+    return function () {
       anime.remove("#logo-div");
-      anime.remove('.App-header > h1');
-    }
-
+      anime.remove(".App-header > h1");
+    };
   }, []);
+
+  const deleteFinished = async () => {
+    if (
+      (
+        await swalConfirm(
+          "Videos that are 100% completed will be deleted. Continue?",
+          "Delete finished vods?"
+        )
+      ).isConfirmed
+    ) {
+      setVidState((old) => {
+        const newVods = { ...old };
+        for (const [id, info] of Object.entries(newVods)) {
+          const { currTime, totalTime } = info;
+          if (currTime == totalTime) {
+            chrome.storage.local.remove(id);
+            delete newVods[id];
+          }
+        }
+        return newVods;
+      });
+    }
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>YouTube Progress Tracker</h1>
-          <div id="logo-div"><NewLogo className="App-logo" /></div>
+        <div id="logo-div">
+          <NewLogo className="App-logo" />
+        </div>
       </header>
+      <button className="button" onClick={deleteFinished}>
+        Delete Finished Videos
+      </button>
       <hr></hr>
       <ul id="visible-ul">
         <List
-          items={vids}
+          items={vidState}
           renderItem={(props) => (
             <>
               <Row
+                key={props.vidId}
                 vidId={props.vidId}
                 title={props.title}
                 currTime={props.currTime}

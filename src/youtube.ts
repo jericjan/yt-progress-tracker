@@ -23,7 +23,7 @@ async function ytSendProgListener(e: any) {
     return;
   }
 
-  if (!stuff.title) {
+  if (!stuff[vidId].title) {
     return; // visiting the link of a dead video will have a blank title. return to ignore
   }
 

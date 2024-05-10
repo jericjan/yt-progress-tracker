@@ -56,14 +56,17 @@ function Row({
           );
         } catch (error) {
           // swalBasic("Can't set time","You might have refreshed the extension. Please refresh the page.", "error")
-          const confirm = await swalConfirm("Due to the extension being refreshed, time cannot be set without also refreshing the page. Continue?","Page refresh needed","Refresh")
+          const confirm = await swalConfirm(
+            "Due to the extension being refreshed, time cannot be set without also refreshing the page. Continue?",
+            "Page refresh needed",
+            "Refresh"
+          );
 
-          if (confirm.isConfirmed){
+          if (confirm.isConfirmed) {
             await chrome.tabs.update(firstTab.tabId as number, {
               url: timedUrl,
             });
           }
-
         }
       } else {
         await chrome.tabs.update(firstTab.tabId as number, {
