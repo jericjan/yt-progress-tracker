@@ -50,7 +50,7 @@ function UnstoredRow({
 
   const deleteVid = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    if ((await swalConfirm("Do you want to close this tab?")).isConfirmed) {
+    if (e.shiftKey || (await swalConfirm("Do you want to close this tab?")).isConfirmed) {
       chrome.tabs.remove(tabId as number);
       listRef.current.remove();
       hrRef.current.remove();

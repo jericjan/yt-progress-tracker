@@ -9,13 +9,8 @@ async function getCurrentTab(): Promise<chrome.tabs.Tab> {
   return tab;
 }
 
-async function findTabs(targetVidId: string, onlyAudible?: Boolean ): Promise<chrome.tabs.Tab[]> {
-
-  const options = onlyAudible ? {audible: true} : {'url':'https://www.youtube.com/watch*'}
-
-  const audibleTabs = await chrome.tabs.query(options);
-
-  const matchedTabs = audibleTabs.filter((tab) => {
+function findTabs(targetVidId: string, ytTabs: chrome.tabs.Tab[] ): chrome.tabs.Tab[] {
+  const matchedTabs = ytTabs.filter((tab) => {
     const currentVidId = getVideoId(tab.url);
     if (currentVidId == targetVidId) {
       return true;

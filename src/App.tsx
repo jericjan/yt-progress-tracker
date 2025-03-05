@@ -69,6 +69,29 @@ function App({ vids, unstored }: AppProps) {
     }
   };
 
+  const deleteClosed = async () => {
+    if (
+      (
+        await swalConfirm(
+          "Videos that have a tab count of 0 will be deleted. Continue?",
+          "Delete closed vods?"
+        )
+      ).isConfirmed
+    ) {
+      setVidState((old) => {
+        const newVods = { ...old };
+        for (const [id, info] of Object.entries(newVods)) {
+          const { sessions } = info;
+          if (sessions.length == 0) {
+            chrome.storage.local.remove(id);
+            delete newVods[id];
+          }
+        }
+        return newVods;
+      });
+    }
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -80,6 +103,9 @@ function App({ vids, unstored }: AppProps) {
       <button className="button" onClick={deleteFinished}>
         Delete Finished Videos
       </button>
+      <button className="button" onClick={deleteClosed}>
+        Delete Closed Videos
+      </button>      
       <hr></hr>
       <ul id="visible-ul">
         <List

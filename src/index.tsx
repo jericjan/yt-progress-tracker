@@ -39,12 +39,14 @@ if (node_env == "development") {
 
     // saveVods does not have tab and window info
     const timer = new Timer();
+    const currTab = await getCurrentTab();
+    timer.log("getCurrenTab");
+    const ytTabs = await chrome.tabs.query({'url':'https://www.youtube.com/watch*'});
+    timer.log("ytTabs");
     for (const vidId in savedVods) {
       // these two async funcs query tabs twice in total, doesn't seem to affect performance tho
-      const matchedTabs = await findTabs(vidId);
-      timer.log("findTabs");
-      const currTab = await getCurrentTab();
-      timer.log("getCurrenTab");
+      const matchedTabs = findTabs(vidId, ytTabs);
+      // timer.log("findTabs");            
       var currTabindex: number = -1;
       const sessions = matchedTabs.map((x, idx) => {
         if (x.id == currTab.id) {
@@ -53,7 +55,7 @@ if (node_env == "development") {
 
         return { tabId: x.id, windowId: x.windowId } as TabAndWindowID;
       });
-      timer.log("mapped IDs and set currTabIndex");
+      // timer.log("mapped IDs and set currTabIndex");
       savedVods[vidId].isCurrent = false;
 
       if (currTabindex != -1) {
@@ -63,12 +65,12 @@ if (node_env == "development") {
         sessions.unshift(removedItem);
         // moves that tab to the beginning of the list
       }
-      timer.log("sorted currTab");
+      // timer.log("sorted currTab");
 
       savedVods[vidId].sessions = sessions;
-      timer.log("replaced sessions");
+      // timer.log("replaced sessions");
     }
-
+    timer.log("savedVods itered");
     // saveVods now has tab and window info
 
     // TODO: maybe make findUnstoredTabs use the same tab list from findTabs?

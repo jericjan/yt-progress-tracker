@@ -49,4 +49,9 @@ module.exports = {
       };
     },
   },
+  // resolve: { // remove in prod
+  //   alias: {
+  //     'react-dom$': 'react-dom/profiling',
+  //   }
+  // }
 };

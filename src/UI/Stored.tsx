@@ -82,6 +82,7 @@ function Row({
   const deleteVid = async (e: React.MouseEvent) => {
     e.stopPropagation();
     if (
+      e.shiftKey ||
       (await swalConfirm("Are you sure you want to delete this from storage?"))
         .isConfirmed
     ) {
@@ -97,11 +98,12 @@ function Row({
 
       if (
         sessions.length > 0 &&
-        (
-          await swalConfirm(
-            "Do you also want to close all open tabs associated with this video?"
-          )
-        ).isConfirmed
+        (e.shiftKey ||
+          (
+            await swalConfirm(
+              "Do you also want to close all open tabs associated with this video?"
+            )
+          ).isConfirmed)
       ) {
         for (const session of sessions) {
           chrome.tabs.remove(session.tabId as number);

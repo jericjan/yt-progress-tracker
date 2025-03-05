@@ -46,13 +46,20 @@ export function ButtonWithText({ props }: ButtonWithTextProps) {
     top: "50%",
     "white-space": 'nowrap'
   };
+
+  const childProps = {
+    onClick: onClick,
+    className: "btn-with-text",
+    stroke: color
+  }
+
   return (
     <>
       <div className="relative">
         <p style={textStyle} className="hide weight-700">
           {text}
         </p>
-        <Component onClick={onClick} className="btn-with-text" stroke={color} />
+        <Component {...childProps} />
       </div>
     </>
   );
