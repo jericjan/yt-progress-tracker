@@ -35,6 +35,7 @@ type renderItemFunc = (props: RowProps) => JSX.Element;
 
 /**basically looks the same as {@link VideoInfo} except no nesting and an extra key */
 type RowProps = {
+  selected: boolean;
   vidId: string;
   title: string;
   currTime: number;

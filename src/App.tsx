@@ -9,7 +9,7 @@ import { swalConfirm } from "modules/swal";
 
 function App({ vids, unstored }: AppProps) {
   const [vidState, setVidState] = useState(vids);
-
+  // anime.js anims
   useEffect(() => {
     function randomValues() {
       const distance = 25;
@@ -45,6 +45,7 @@ function App({ vids, unstored }: AppProps) {
       anime.remove(".App-header > h1");
     };
   }, []);
+
 
   const deleteFinished = async () => {
     if (
@@ -113,6 +114,7 @@ function App({ vids, unstored }: AppProps) {
           renderItem={(props) => (
             <>
               <Row
+                selected={props.selected}
                 key={props.vidId}
                 vidId={props.vidId}
                 title={props.title}

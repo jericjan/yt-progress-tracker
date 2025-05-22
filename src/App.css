@@ -176,3 +176,7 @@ hr {
   border-radius: 8px;
   margin-bottom: 12px;
 }
+
+.selected {
+  background-color: #acd1853b;
+} 

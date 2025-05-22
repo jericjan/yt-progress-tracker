@@ -1,10 +1,11 @@
 import { ListProps, PartialVideoInfo, RowProps } from "modules/interfaces";
 import { formatTime } from "modules/mathStuff";
 import { swalBasic, swalConfirm } from "modules/swal";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ResetButton, TrashButton } from "./Buttons";
 
 function Row({
+  selected,
   title,
   currTime,
   totalTime,
@@ -140,7 +141,7 @@ function Row({
   return (
     <>
       <li ref={listRef}>
-        <a className="tabContainer" onClick={click}>
+        <a className={`tabContainer ${selected ? 'selected' : ''}`} onClick={click}>
           <div className="iconDiv">
             <img
               className="thumb"
@@ -169,6 +170,8 @@ function Row({
 function List({ items, renderItem }: ListProps) {
   const vidIds = Object.keys(items);
   const [videoCount, setVideoCount] = useState(vidIds.length);
+  const [selectedVidId, setSelectedVidId] = useState("")
+
 
   const changeVideoCount = (amount: number) => {
     setVideoCount(videoCount + amount);
@@ -194,7 +197,7 @@ function List({ items, renderItem }: ListProps) {
       return secondSessCount - firstSessCount;
     }
   });
-
+  
   if (vidIds.length == 0) {
     return (
       <p className="msg-text">
@@ -204,6 +207,30 @@ function List({ items, renderItem }: ListProps) {
     );
   }
 
+    useEffect(() => {
+    async function keyCheck(e: KeyboardEvent){
+      if (e.key == "j"){
+        console.log("DOWN")
+        console.log(vidIds[0])
+        if (selectedVidId == "") {
+          setSelectedVidId(vidIds[0])          
+        } else {
+          setSelectedVidId(vidIds[Math.min(vidIds.length - 1, vidIds.indexOf(selectedVidId) + 1)])
+        }
+      } else if (e.key == "k"){
+        console.log("UP")
+        
+      } else if (e.key == "d"){
+        console.log("DELETE")
+      } 
+    }
+    document.addEventListener("keyup", keyCheck)
+
+    return function () {
+      document.removeEventListener("keyup", keyCheck)      
+    };
+  }, [videoCount]);
+
   return (
     <>
       <div className="sub-header">
@@ -211,10 +238,15 @@ function List({ items, renderItem }: ListProps) {
       </div>
       <hr></hr>
       {vidIds.map((vidId) => {
+        let selected = false;
+        if (selectedVidId == vidId) {
+          selected = true;
+        }
         const contents = items[vidId];
         const { title, currTime, totalTime, sessions, isCurrent, epoch } =
           contents;
         return renderItem({
+          selected: selected,
           vidId: vidId,
           title: title,
           currTime: currTime,
