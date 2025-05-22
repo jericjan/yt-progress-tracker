@@ -138,10 +138,20 @@ function Row({
     chrome.storage.local.set(vidInfo);
   };
 
+  useEffect(()=> {
+    if (selected) {      
+      listRef.current.scrollIntoView();
+    }
+  }, [selected])
+
+
   return (
     <>
       <li ref={listRef}>
-        <a className={`tabContainer ${selected ? 'selected' : ''}`} onClick={click}>
+        <a
+          className={`tabContainer ${selected ? "selected" : ""}`}
+          onClick={click}
+        >
           <div className="iconDiv">
             <img
               className="thumb"
@@ -168,36 +178,37 @@ function Row({
 }
 
 function List({ items, renderItem }: ListProps) {
-  const vidIds = Object.keys(items);
-  const [videoCount, setVideoCount] = useState(vidIds.length);
-  const [selectedVidId, setSelectedVidId] = useState("")
+  const [vidIds, setVidIds] = useState(() => {
+    const lmao = Object.keys(items);
+    lmao.sort((first, second) => {
+      const firstState = items[first].isCurrent;
+      const secondState = items[second].isCurrent;
 
+      const firstSessCount = items[first].sessions.length;
+      const secondSessCount = items[second].sessions.length;
+
+      const firstEpoch = items[first].epoch;
+      const secondEpoch = items[second].epoch;
+
+      if (firstState == true && secondState == false) {
+        return -1;
+      } else if (firstState == false && secondState == true) {
+        return 1;
+      } else if (firstSessCount == secondSessCount) {
+        return secondEpoch - firstEpoch;
+      } else {
+        return secondSessCount - firstSessCount;
+      }
+    });
+    return lmao;
+  });
+  const [videoCount, setVideoCount] = useState(vidIds.length);
+  const [selectedVidId, setSelectedVidId] = useState("");
 
   const changeVideoCount = (amount: number) => {
     setVideoCount(videoCount + amount);
   };
 
-  vidIds.sort((first, second) => {
-    const firstState = items[first].isCurrent;
-    const secondState = items[second].isCurrent;
-
-    const firstSessCount = items[first].sessions.length;
-    const secondSessCount = items[second].sessions.length;
-
-    const firstEpoch = items[first].epoch;
-    const secondEpoch = items[second].epoch;
-
-    if (firstState == true && secondState == false) {
-      return -1;
-    } else if (firstState == false && secondState == true) {
-      return 1;
-    } else if (firstSessCount == secondSessCount) {
-      return secondEpoch - firstEpoch;
-    } else {
-      return secondSessCount - firstSessCount;
-    }
-  });
-  
   if (vidIds.length == 0) {
     return (
       <p className="msg-text">
@@ -207,29 +218,40 @@ function List({ items, renderItem }: ListProps) {
     );
   }
 
-    useEffect(() => {
-    async function keyCheck(e: KeyboardEvent){
-      if (e.key == "j"){
-        console.log("DOWN")
-        console.log(vidIds[0])
+  useEffect(() => {
+    async function keyCheck(e: KeyboardEvent) {
+      let newVidId = "";
+      if (e.key == "j") {
+        console.log("DOWN");
+
         if (selectedVidId == "") {
-          setSelectedVidId(vidIds[0])          
+          newVidId = vidIds[0];
         } else {
-          setSelectedVidId(vidIds[Math.min(vidIds.length - 1, vidIds.indexOf(selectedVidId) + 1)])
+          newVidId =
+            vidIds[
+              Math.min(vidIds.length - 1, vidIds.indexOf(selectedVidId) + 1)
+            ];
         }
-      } else if (e.key == "k"){
-        console.log("UP")
-        
-      } else if (e.key == "d"){
-        console.log("DELETE")
-      } 
+        setSelectedVidId(newVidId);
+      } else if (e.key == "k") {
+        console.log("UP");
+
+        if (selectedVidId == "") {
+          newVidId = vidIds[0];
+        } else {
+          newVidId = vidIds[Math.max(0, vidIds.indexOf(selectedVidId) - 1)];
+        }
+        setSelectedVidId(newVidId);
+      } else if (e.key == "d") {
+        console.log("DELETE");
+      }
     }
-    document.addEventListener("keyup", keyCheck)
+    document.addEventListener("keyup", keyCheck);
 
     return function () {
-      document.removeEventListener("keyup", keyCheck)      
+      document.removeEventListener("keyup", keyCheck);
     };
-  }, [videoCount]);
+  }, [vidIds, selectedVidId]);
 
   return (
     <>
