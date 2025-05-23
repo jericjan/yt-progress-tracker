@@ -101,12 +101,15 @@ function App({ vids, unstored }: AppProps) {
           <NewLogo className="App-logo" />
         </div>
       </header>
-      <button className="button" onClick={deleteFinished}>
-        Delete Finished Videos
-      </button>
-      <button className="button" onClick={deleteClosed}>
-        Delete Closed Videos
-      </button>      
+      <div className="button-menu">
+        <button className="button" onClick={deleteFinished}>
+          Delete Finished Videos
+        </button>
+        <button className="button" onClick={deleteClosed}>
+          Delete Closed Videos
+        </button>
+      </div>
+      <p className="white">Shortcuts: <b>d</b> - Delete, <b>j</b> - Down, <b>k</b> - Up</p>
       <hr></hr>
       <ul id="visible-ul">
         <List

@@ -172,11 +172,30 @@ hr {
 }
 
 .button {
-  padding: 7px;
-  border-radius: 8px;
-  margin-bottom: 12px;
+  padding: 13px;
+  border-radius: 17px;
+  border-style: hidden;
+  border-width: 12px;
+  background-color: #ccf9ff;
+  font-weight: 900;
+  font-family: inherit;
+  transition: 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.button:hover {
+  background-color: #ffd1ae;
 }
 
 .selected {
   background-color: #acd1853b;
 } 
+
+.white {
+  color: white;
+}
+
+.button-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

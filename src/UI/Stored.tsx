@@ -138,12 +138,11 @@ function Row({
     chrome.storage.local.set(vidInfo);
   };
 
-  useEffect(()=> {
-    if (selected) {      
+  useEffect(() => {
+    if (selected) {
       listRef.current.scrollIntoView();
     }
-  }, [selected])
-
+  }, [selected]);
 
   return (
     <>
@@ -219,6 +218,18 @@ function List({ items, renderItem }: ListProps) {
   }
 
   useEffect(() => {
+    function cycleId(direction: "next" | "prev") {
+      if (direction == "next") {
+        return vidIds[
+          Math.min(vidIds.length - 1, vidIds.indexOf(selectedVidId) + 1)
+        ];
+      } else if (direction == "prev") {
+        return vidIds[Math.max(0, vidIds.indexOf(selectedVidId) - 1)];
+      } else {
+        throw new Error("Invalid direction");
+      }
+    }
+
     async function keyCheck(e: KeyboardEvent) {
       let newVidId = "";
       if (e.key == "j") {
@@ -227,10 +238,7 @@ function List({ items, renderItem }: ListProps) {
         if (selectedVidId == "") {
           newVidId = vidIds[0];
         } else {
-          newVidId =
-            vidIds[
-              Math.min(vidIds.length - 1, vidIds.indexOf(selectedVidId) + 1)
-            ];
+          newVidId = cycleId("next");
         }
         setSelectedVidId(newVidId);
       } else if (e.key == "k") {
@@ -239,16 +247,45 @@ function List({ items, renderItem }: ListProps) {
         if (selectedVidId == "") {
           newVidId = vidIds[0];
         } else {
-          newVidId = vidIds[Math.max(0, vidIds.indexOf(selectedVidId) - 1)];
+          newVidId = cycleId("prev");
         }
         setSelectedVidId(newVidId);
       } else if (e.key == "d") {
+        if (selectedVidId == "") {
+          return;
+        }
         console.log("DELETE");
+
+        changeVideoCount(-1);
+
+        await chrome.storage.local.remove(selectedVidId);
+        for (const session of items[selectedVidId].sessions) {
+          chrome.tabs.remove(session.tabId as number);
+        }
+
+        newVidId = cycleId("next");
+        if (newVidId == selectedVidId) {
+          newVidId = cycleId("prev");
+          if (newVidId == selectedVidId) {
+            newVidId = "";
+          }
+        }
+
+        setVidIds((vidIds) => {
+          const newVidIds = [...vidIds];
+          const deleted = newVidIds.splice(vidIds.indexOf(selectedVidId), 1);
+          console.log(`Deleted: ${deleted}`);
+          return newVidIds;
+        });
+
+        setSelectedVidId(newVidId)
       }
     }
+    console.log("Added key listener")
     document.addEventListener("keyup", keyCheck);
 
     return function () {
+      console.log("Removed key listener")
       document.removeEventListener("keyup", keyCheck);
     };
   }, [vidIds, selectedVidId]);
